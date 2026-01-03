@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Greatness: Онлайн-присутствие для бизнеса в Солнечногорске</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+    <meta name="description"
+        content="Создаем и настраиваем полное онлайн-присутствие для малого бизнеса: сайты, Яндекс.Карты, Google Бизнес, привлечение клиентов.">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Мобильная оптимизация -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Предотвращение номера телефона как ссылки в iOS -->
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Иконки для мобильных -->
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/android-chrome-512x512.png">
+
+    <!-- Manifest для PWA (опционально) -->
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <span class="logo-icon">DG</span>
+                    <span class="logo-text">Digital Greatness</span>
+                </a>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#process">Как работаем</a></li>
+                        <li><a href="#cases">Кейсы</a></li>
+                        <li><a href="#for-whom">Для кого</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a href="#audit" class="btn btn-primary btn-small">Бесплатный аудит</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Ваше присутствие в интернете для <span
+                        class="city-highlight">Солнечногорска</span></h1>
+                <p class="hero-subtitle">Находим клиентов, пока вы работаете. Полный цикл: от сайта и карт до первых
+                    заявок.</p>
+
+                <div class="hero-actions">
+                    <a href="#audit" class="btn btn-primary btn-large">
+                        <i class="fas fa-search"></i> Получить бесплатный аудит
+                    </a>
+                    <a href="#services" class="btn btn-secondary btn-large">
+                        <i class="fas fa-list"></i> Смотреть услуги
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-text">работает на вас</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-text">фокус на ваш город</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-text">вашего времени на техзадачи</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="device-mockup">
+                    <div class="device-screen">
+                        <!-- Здесь будет CSS-анимация слайдов -->
+                        <div class="screen-slide active">
+                            <div class="slide-content">
+                                <h4>Ваш сайт</h4>
+                                <p>Чистый, современный, на вашем домене</p>
+                            </div>
+                        </div>
+                        <div class="screen-slide">
+                            <div class="slide-content">
+                                <h4>В топе карт</h4>
+                                <p>Яндекс и Google Карты с отзывами</p>
+                            </div>
+                        </div>
+                        <div class="screen-slide">
+                            <div class="slide-content">
+                                <h4>Заявки в Telegram</h4>
+                                <p>Автоматический прием заявок</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция услуг -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Услуги и пакеты</h2>
+            <p class="section-subtitle">Выберите готовое решение или соберите свой пакет</p>
+
+            <div class="pricing-grid">
+                <!-- Пакет 1 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Базовый</h3>
+                        <div class="price">от 15 000₽</div>
+                        <p class="price-subtitle">или 3 900₽/мес</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Сайт-визитка на вашем домене</li>
+                        <li><i class="fas fa-check"></i> Настройка Яндекс.Бизнес и Google Мой Бизнес</li>
+                        <li><i class="fas fa-check"></i> Базовая SEO-оптимизация</li>
+                        <li><i class="fas fa-check"></i> Подключение телефона, WhatsApp</li>
+                        <li><i class="fas fa-check"></i> Обучение работе с карточками</li>
+                        <li><i class="fas fa-times"></i> <span class="feature-disabled">Ведение карточек и
+                                отзывов</span></li>
+                        <li><i class="fas fa-times"></i> <span class="feature-disabled">Чат-бот для заявок</span></li>
+                    </ul>
+                    <button class="btn btn-outline select-plan" data-plan="Базовый">Выбрать пакет</button>
+                </div>
+
+                <!-- Пакет 2 (акцентный) -->
+                <div class="pricing-card featured">
+                    <div class="badge">Популярный</div>
+                    <div class="pricing-header">
+                        <h3>Работающий</h3>
+                        <div class="price">6 900₽/мес</div>
+                        <p class="price-subtitle">+ стартовые 25 000₽</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <strong>Всё из "Базового"</strong></li>
+                        <li><i class="fas fa-check"></i> Ежемесячное ведение карточек</li>
+                        <li><i class="fas fa-check"></i> Ответы на отзывы</li>
+                        <li><i class="fas fa-check"></i> Чат-бот в Telegram для заявок</li>
+                        <li><i class="fas fa-check"></i> Система онлайн-записи на сайте</li>
+                        <li><i class="fas fa-check"></i> Ежемесячный отчет по заявкам</li>
+                        <li><i class="fas fa-times"></i> <span class="feature-disabled">Настройка контекстной
+                                рекламы</span></li>
+                    </ul>
+                    <button class="btn btn-primary select-plan" data-plan="Работающий">Начать работать</button>
+                </div>
+
+                <!-- Пакет 3 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Привлекающий</h3>
+                        <div class="price">индивидуально</div>
+                        <p class="price-subtitle">абонентка + % от рекламы</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <strong>Всё из "Работающего"</strong></li>
+                        <li><i class="fas fa-check"></i> Настройка Яндекс.Директ/Google Ads</li>
+                        <li><i class="fas fa-check"></i> Таргетированная реклама в соцсетях</li>
+                        <li><i class="fas fa-check"></i> Аналитика и оптимизация кампаний</li>
+                        <li><i class="fas fa-check"></i> А/B тестирование объявлений</li>
+                        <li><i class="fas fa-check"></i> Регулярные стратегические сессии</li>
+                        <li><i class="fas fa-check"></i> Приоритетная поддержка 24/7</li>
+                    </ul>
+                    <button class="btn btn-outline select-plan" data-plan="Привлекающий">Обсудить проект</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как работаем -->
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">Как мы работаем</h2>
+            <p class="section-subtitle">Прозрачный процесс от первой консультации до результата</p>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Бесплатный аудит</h3>
+                        <p>Вы присылаете ссылку или название вашего бизнеса. Мы анализируем текущее присутствие и
+                            готовим 3-5 конкретных пунктов для улучшения.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Обсуждение и план</h3>
+                        <p>Звонок или встреча. Определяем цели, бюджет, подбираем пакет. Заключаем договор (по желанию).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Реализация</h3>
+                        <p>Мы делаем всю техническую работу: покупаем домен, создаем сайт, настраиваем карточки,
+                            подключаем инструменты. Вы вносите правки на этапе макета.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Запуск и обучение</h3>
+                        <p>Сдаем вам "ключи" - доступы ко всему. Объясняем, как пользоваться (если нужно). Система
+                            начинает работать на вас 24/7.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Поддержка и рост</h3>
+                        <p>Если в пакете: ежемесячно обновляем контент, отвечаем на отзывы, присылаем отчеты.
+                            Масштабируем при необходимости.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма аудита -->
+    <section id="audit" class="audit">
+        <div class="container">
+            <div class="audit-card">
+                <div class="audit-content">
+                    <h2>Бесплатный аудит вашего онлайн-присутствия</h2>
+                    <p>Пришлите ссылку на ваш бизнес в соцсетях, сайт или просто укажите сферу. В течение 24 часов мы
+                        проанализируем и предложим 3 конкретных шага для улучшения.</p>
+
+                    <div class="audit-features">
+                        <div class="audit-feature">
+                            <i class="fas fa-bolt"></i>
+                            <span>Быстро: за 24 часа</span>
+                        </div>
+                        <div class="audit-feature">
+                            <i class="fas fa-gift"></i>
+                            <span>Бесплатно: без обязательств</span>
+                        </div>
+                        <div class="audit-feature">
+                            <i class="fas fa-target"></i>
+                            <span>Полезно: только конкретика</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="audit-form">
+                    <form id="auditForm">
+                        <div class="form-group">
+                            <label for="business">Чем вы занимаетесь?*</label>
+                            <input type="text" id="business" placeholder="Например: маникюрный салон, ремонт iPhone"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="link">Ссылка на ваш бизнес (если есть)</label>
+                            <input type="url" id="link" placeholder="Сайт, соцсеть, карта">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact">Как с вами связаться?*</label>
+                            <input type="text" id="contact" placeholder="Telegram, WhatsApp или email" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Получить аудит
+                        </button>
+
+                        <p class="form-note">Нажимая, вы соглашаетесь на обработку данных. Мы не рассылаем спам.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-icon">DG</span>
+                        <span class="logo-text">Digital Greatness</span>
+                    </a>
+                    <p>Онлайн-присутствие для малого бизнеса в Солнечногорске. Системный подход к привлечению клиентов.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Проект</h4>
+                    <ul>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#process">Как работаем</a></li>
+                        <li><a href="#cases">Кейсы</a></li>
+                        <li><a href="#for-whom">Для кого</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="https://t.me/digital_presence_bot" target="_blank"><i class="fab fa-telegram"></i>
+                                Telegram-бот</a></li>
+                        <li><a href="mailto:hello@digital-presence.ru"><i class="fas fa-envelope"></i>
+                                hello@digital-presence.ru</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> [номер по запросу]</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-cta">
+                    <h4>Начать работу</h4>
+                    <p>Готовы улучшить свое онлайн-присутствие?</p>
+                    <a href="#audit" class="btn btn-outline-light">Бесплатный аудит</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Digital Greatness. Солнечногорск.</p>
+                <p>Работаем с ИП и самозанятыми</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно выбора пакета -->
+    <div class="modal" id="planModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>Вы выбрали пакет: <span id="selectedPlanName"></span></h3>
+            <p>Спасибо за выбор! С вами свяжется наш специалист в течение 2 часов для уточнения деталей.</p>
+            <p>А пока можете отправить базовую информацию через форму аудита выше.</p>
+            <button class="btn btn-primary" id="goToAudit">Перейти к форме</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
