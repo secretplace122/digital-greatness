@@ -1,7 +1,7 @@
 // =============================================
 // КОНФИГУРАЦИЯ
 // =============================================
-const FORM_HANDLER_URL = 'https://script.google.com/macros/s/AKfycbymlF5UQyvydQjm1a6sc7bObqbTSl1duTMV2Io5hCS2cUCruomjaY73uHevfBGifX1x/exec';
+const FORM_HANDLER_URL = 'https://script.google.com/macros/s/AKfycbxV5Uwpn-4ZIR0v_wjhYjh9nvNnD7898FUnz22utve3n4lW5JPxgQJ-BU6Zh2ZXQqPX/exec';
 
 // =============================================
 // ОСНОВНОЙ КОД ПРИ ЗАГРУЗКЕ
