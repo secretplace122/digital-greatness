@@ -1,5 +1,13 @@
-// DOM готов
+// =============================================
+// КОНФИГУРАЦИЯ
+// =============================================
+const FORM_HANDLER_URL = 'https://script.google.com/macros/s/AKfycbymlF5UQyvydQjm1a6sc7bObqbTSl1duTMV2Io5hCS2cUCruomjaY73uHevfBGifX1x/exec';
+
+// =============================================
+// ОСНОВНОЙ КОД ПРИ ЗАГРУЗКЕ
+// =============================================
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('Digital Greatness инициализирован');
 
     // 1. Мобильное меню
     const menuToggle = document.getElementById('menuToggle');
@@ -19,7 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             nav.classList.remove('active');
-            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            if (menuToggle) {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         });
     });
 
@@ -28,9 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentSlide = 0;
 
     function showNextSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
+        if (slides.length > 0) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
     }
 
     // Запуск слайдшоу каждые 3 секунды
@@ -48,101 +60,71 @@ document.addEventListener('DOMContentLoaded', function () {
     selectPlanButtons.forEach(button => {
         button.addEventListener('click', function () {
             const plan = this.getAttribute('data-plan');
-            selectedPlanName.textContent = plan;
-            planModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            if (selectedPlanName) {
+                selectedPlanName.textContent = plan;
+            }
+            if (planModal) {
+                planModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
         });
     });
 
     // Закрытие модального окна
-    modalClose.addEventListener('click', function () {
-        planModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
+    if (modalClose) {
+        modalClose.addEventListener('click', function () {
+            if (planModal) {
+                planModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
 
     // Клик вне модального окна
     window.addEventListener('click', function (event) {
-        if (event.target === planModal) {
+        if (planModal && event.target === planModal) {
             planModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
     });
 
     // Переход к форме аудита
-    goToAudit.addEventListener('click', function () {
-        planModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+    if (goToAudit) {
+        goToAudit.addEventListener('click', function () {
+            if (planModal) {
+                planModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
 
-        // Плавная прокрутка к форме
-        document.getElementById('audit').scrollIntoView({
-            behavior: 'smooth'
-        });
+            // Плавная прокрутка к форме
+            document.getElementById('audit').scrollIntoView({
+                behavior: 'smooth'
+            });
 
-        // Фокус на поле ввода
-        setTimeout(() => {
-            document.getElementById('business').focus();
-        }, 500);
-    });
-
-    // 4. Обработка формы аудита
-    const auditForm = document.getElementById('auditForm');
-
-    if (auditForm) {
-        auditForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Сбор данных
-            const formData = {
-                business: document.getElementById('business').value,
-                link: document.getElementById('link').value,
-                contact: document.getElementById('contact').value,
-                date: new Date().toISOString()
-            };
-
-            // В реальном проекте здесь будет отправка на сервер
-            console.log('Данные формы:', formData);
-
-            // Показываем сообщение об успехе
-            const submitButton = auditForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-
-            submitButton.innerHTML = '<i class="fas fa-check"></i> Отправлено!';
-            submitButton.disabled = true;
-            submitButton.style.backgroundColor = '#10b981';
-
-            // В реальном проекте:
-            // 1. Отправить данные в Telegram-бота через API
-            // 2. Или отправить на email
-            // 3. Или сохранить в Google Sheets
-
-            // Имитация отправки
+            // Фокус на поле ввода
             setTimeout(() => {
-                // Сброс формы
-                auditForm.reset();
-
-                // Восстановление кнопки через 2 секунды
-                setTimeout(() => {
-                    submitButton.innerHTML = originalText;
-                    submitButton.disabled = false;
-                    submitButton.style.backgroundColor = '';
-                }, 2000);
-            }, 1500);
-
-            // Можно добавить отправку в Telegram
-            // sendToTelegram(formData);
+                const businessInput = document.getElementById('business');
+                if (businessInput) {
+                    businessInput.focus();
+                }
+            }, 500);
         });
+    }
+
+    // 4. Обработка формы аудита (ОБНОВЛЕНО!)
+    const auditForm = document.getElementById('auditForm');
+    if (auditForm) {
+        auditForm.addEventListener('submit', handleFormSubmit);
     }
 
     // 5. Плавная прокрутка для якорных ссылок
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-
-            if (href === '#') return;
+            if (href === '#' || href === '#!') return;
 
             e.preventDefault();
             const targetElement = document.querySelector(href);
-
             if (targetElement) {
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
@@ -158,172 +140,264 @@ document.addEventListener('DOMContentLoaded', function () {
         currentYearElement.textContent = new Date().getFullYear();
     }
 
-    // 7. Анимация при скролле (появление элементов)
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
+    // 7. Анимация при скролле
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
-    }, observerOptions);
 
-    // Наблюдаем за секциями
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    }
+
+    // 8. Мобильные оптимизации
+    optimizeForMobile();
 });
 
-// Функция для отправки данных в Telegram (пример)
-function sendToTelegram(formData) {
-    // Токен бота и ID чата (заменить на реальные)
-    const botToken = 'YOUR_BOT_TOKEN';
-    const chatId = 'YOUR_CHAT_ID';
-
-    const message = `📊 Новая заявка на аудит:\n\n` +
-        `Бизнес: ${formData.business}\n` +
-        `Ссылка: ${formData.link || 'не указана'}\n` +
-        `Контакты: ${formData.contact}\n` +
-        `Время: ${new Date(formData.date).toLocaleString('ru-RU')}`;
-
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            chat_id: chatId,
-            text: message,
-            parse_mode: 'HTML'
-        })
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Сообщение отправлено в Telegram:', data);
-        })
-        .catch(error => {
-            console.error('Ошибка отправки в Telegram:', error);
+// =============================================
+// ОБРАБОТКА ФОРМЫ (ОСНОВНАЯ ФУНКЦИЯ)
+// =============================================
+async function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    const auditForm = e.target;
+    const submitButton = auditForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    
+    // Блокируем повторную отправку
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+    
+    // Собираем данные
+    const formData = {
+        business: document.getElementById('business')?.value.trim() || '',
+        link: document.getElementById('link')?.value.trim() || '',
+        contact: document.getElementById('contact')?.value.trim() || '',
+        source: 'digital-greatness.ru',
+        timestamp: new Date().toISOString()
+    };
+    
+    // Валидация
+    if (!formData.business || !formData.contact) {
+        showMessage('Пожалуйста, заполните все обязательные поля', 'error');
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalText;
+        return;
+    }
+    
+    try {
+        console.log('Отправка данных:', formData);
+        
+        // Отправка на Google Apps Script
+        // Используем fetch с no-cors для обхода CORS
+        const response = await fetch(FORM_HANDLER_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Важно для Google Apps Script!
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
         });
+        
+        // При mode: 'no-cors' мы не получаем ответ, но запрос выполняется
+        console.log('Запрос отправлен (no-cors mode)');
+        
+        // Показываем успех
+        showMessage(
+            '✅ Заявка отправлена! Мы свяжемся с вами в течение 24 часов.',
+            'success'
+        );
+        
+        // Анимация успеха
+        animateSuccess();
+        
+        // Сбрасываем форму
+        setTimeout(() => {
+            auditForm.reset();
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Ошибка отправки:', error);
+        
+        // Пробуем резервный метод
+        const fallbackSuccess = await tryFallback(formData);
+        
+        if (fallbackSuccess) {
+            showMessage(
+                '✅ Заявка отправлена (резервный метод)!',
+                'success'
+            );
+            animateSuccess();
+            setTimeout(() => auditForm.reset(), 1000);
+        } else {
+            showMessage(
+                '⚠️ Ошибка отправки. Пожалуйста, напишите нам напрямую в Telegram.',
+                'error'
+            );
+        }
+        
+    } finally {
+        // Разблокируем кнопку через 2 секунды
+        setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+        }, 2000);
+    }
 }
-// Мобильные оптимизации
+
+// =============================================
+// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+// =============================================
+
+// Показать сообщение
+function showMessage(text, type = 'info') {
+    // Удаляем старое сообщение
+    const oldMsg = document.querySelector('.form-message');
+    if (oldMsg) oldMsg.remove();
+    
+    // Создаем новое
+    const message = document.createElement('div');
+    message.className = `form-message form-message-${type}`;
+    
+    const icon = type === 'success' ? 'fa-check-circle' : 
+                 type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+    
+    const bgColor = type === 'success' ? '#10b981' : 
+                   type === 'error' ? '#ef4444' : '#3b82f6';
+    
+    message.innerHTML = `
+        <div style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${bgColor};
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 90%;
+            word-break: break-word;
+        ">
+            <i class="fas ${icon}" style="flex-shrink: 0;"></i>
+            <span>${text}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(message);
+    
+    // Автоудаление через 5 секунд
+    setTimeout(() => {
+        message.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => message.remove(), 300);
+    }, 5000);
+}
+
+// Анимация успеха
+function animateSuccess() {
+    const checkmark = document.createElement('div');
+    checkmark.innerHTML = `
+        <div style="
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: popIn 0.5s ease;
+        ">
+            <i class="fas fa-check" style="color: white; font-size: 40px;"></i>
+        </div>
+    `;
+    
+    document.body.appendChild(checkmark);
+    
+    setTimeout(() => {
+        checkmark.style.opacity = '0';
+        checkmark.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => checkmark.remove(), 500);
+    }, 1000);
+}
+
+// Резервный метод отправки (через Telegram напрямую)
+async function tryFallback(formData) {
+    try {
+        // ВНИМАНИЕ: Токен будет виден в коде!
+        // Используйте только для тестирования или создайте отдельный бот
+        const TEST_BOT_TOKEN = ''; // Оставьте пустым для безопасности
+        const TEST_CHAT_ID = '';
+        
+        if (!TEST_BOT_TOKEN || !TEST_CHAT_ID) {
+            return false; // Не отправляем без токена
+        }
+        
+        const message = `📊 Заявка (резервный метод):\n\n` +
+            `Бизнес: ${formData.business}\n` +
+            `Контакты: ${formData.contact}\n` +
+            `Время: ${new Date().toLocaleString('ru-RU')}`;
+        
+        const response = await fetch(`https://api.telegram.org/bot${TEST_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: TEST_CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            })
+        });
+        
+        return response.ok;
+        
+    } catch (error) {
+        console.error('Ошибка резервного метода:', error);
+        return false;
+    }
+}
+
+// =============================================
+// МОБИЛЬНЫЕ ОПТИМИЗАЦИИ
+// =============================================
 function optimizeForMobile() {
     // 1. Улучшаем touch события
     document.addEventListener('touchstart', function () { }, { passive: true });
-
+    
     // 2. Предотвращаем двойной тап для зума
     let lastTouchEnd = 0;
     document.addEventListener('touchend', function (event) {
-        const now = (new Date()).getTime();
+        const now = Date.now();
         if (now - lastTouchEnd <= 300) {
             event.preventDefault();
         }
         lastTouchEnd = now;
     }, false);
-
-    // 3. Оптимизация скролла на iOS
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    // 4. Улучшенная обработка форм на мобильных
-    const inputs = document.querySelectorAll('input, textarea, select');
-    inputs.forEach(input => {
-        input.addEventListener('focus', function () {
-            // Прокручиваем к полю ввода на мобильных
-            if (window.innerWidth < 768) {
-                setTimeout(() => {
-                    this.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-                }, 300);
-            }
-        });
-
-        // Убираем автозаполнение в iOS
-        input.setAttribute('autocomplete', 'off');
-        input.setAttribute('autocorrect', 'off');
-        input.setAttribute('spellcheck', 'false');
-    });
-
-    // 5. Адаптивное меню с touch-свайпом
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    document.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-
-    document.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        const swipeThreshold = 50;
-
-        if (touchStartX - touchEndX > swipeThreshold) {
-            // Свайп влево - закрываем меню если открыто
-            const nav = document.querySelector('.nav');
-            if (nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                const menuToggle = document.getElementById('menuToggle');
-                if (menuToggle) {
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            }
-        }
-    }
-
-    // 6. Улучшенная отправка формы для мобильных
-    const auditForm = document.getElementById('auditForm');
-    if (auditForm && 'connection' in navigator) {
-        // Определяем скорость соединения
-        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-
-        auditForm.addEventListener('submit', function (e) {
-            if (connection && connection.saveData === true) {
-                // Режим экономии трафика
-                showSaveDataMessage();
-            }
-        });
-    }
-
-    // 7. Ленивая загрузка для мобильных
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-}
-
-// Инициализация при загрузке
-document.addEventListener('DOMContentLoaded', function () {
-    // Вызываем мобильную оптимизацию
-    optimizeForMobile();
-
-    // Определяем мобильное устройство
+    
+    // 3. Определяем мобильное устройство
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
+    
     if (isMobile) {
         document.documentElement.classList.add('mobile-device');
-
-        // Убираем hover эффекты на тач-устройствах
+        
+        // Убираем hover эффекты
         const style = document.createElement('style');
         style.textContent = `
             @media (hover: none) and (pointer: coarse) {
@@ -331,85 +405,160 @@ document.addEventListener('DOMContentLoaded', function () {
                     transform: none !important;
                 }
             }
+            
+            /* Анимации для сообщений */
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            
+            @keyframes popIn {
+                0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+                70% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+                100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            }
         `;
         document.head.appendChild(style);
-    }
-
-    // Остальной код из предыдущей версии...
-    // [вставить весь предыдущий JavaScript код здесь]
-
-    // 8. Улучшенная навигация для мобильных
-    const menuToggle = document.getElementById('menuToggle');
-    const nav = document.querySelector('.nav');
-
-    if (menuToggle) {
-        // Touch событие вместо click для лучшего отклика
-        menuToggle.addEventListener('touchstart', function (e) {
-            e.preventDefault();
-            nav.classList.toggle('active');
-            this.innerHTML = nav.classList.contains('active')
-                ? '<i class="fas fa-times"></i>'
-                : '<i class="fas fa-bars"></i>';
-
-            // Блокируем скролл при открытом меню
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-        });
-
-        // Также оставляем click для десктопов
-        menuToggle.addEventListener('click', function (e) {
-            if (!isMobile) {
+        
+        // 4. Адаптивная навигация для touch
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.querySelector('.nav');
+        
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('touchstart', function (e) {
+                e.preventDefault();
                 nav.classList.toggle('active');
                 this.innerHTML = nav.classList.contains('active')
                     ? '<i class="fas fa-times"></i>'
                     : '<i class="fas fa-bars"></i>';
+                
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            }, { passive: false });
+        }
+        
+        // 5. Адаптивный ввод для iOS
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function () {
+                if (window.innerWidth < 768) {
+                    setTimeout(() => {
+                        this.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 300);
+                }
+            });
+            
+            // Оптимизация для iOS
+            input.setAttribute('autocomplete', 'off');
+            input.setAttribute('autocorrect', 'off');
+            input.setAttribute('spellcheck', 'false');
+            
+            if (input.type === 'tel') {
+                input.setAttribute('pattern', '[0-9]*');
+                input.setAttribute('inputmode', 'numeric');
+            }
+        });
+        
+        // 6. Touch-свайп для меню
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+            
+            if (touchStartX - touchEndX > swipeThreshold && nav && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                if (menuToggle) {
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                document.body.style.overflow = '';
             }
         });
     }
-
-    // 9. Адаптивный текстовый ввод для мобильных
-    const textInputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
-    textInputs.forEach(input => {
-        input.addEventListener('focus', function () {
-            // Для iOS - правильная клавиатура
-            if (this.type === 'tel') {
-                this.setAttribute('pattern', '[0-9]*');
-                this.setAttribute('inputmode', 'numeric');
-            }
+    
+    // 7. Ленивая загрузка изображений
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
         });
-    });
-});
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+    
+    // 8. Оптимизация для медленных сетей
+    if ('connection' in navigator) {
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        
+        if (connection) {
+            if (connection.saveData === true) {
+                console.log('Режим экономии трафика включен');
+            }
+            
+            connection.addEventListener('change', function () {
+                if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
+                    document.querySelectorAll('.device-mockup, .hero-visual').forEach(el => {
+                        el.style.opacity = '0.7';
+                    });
+                }
+            });
+        }
+    }
+}
 
-// Вспомогательные функции
+// =============================================
+// УТИЛИТЫ
+// =============================================
 function showSaveDataMessage() {
     const message = document.createElement('div');
-    message.className = 'save-data-message';
     message.innerHTML = `
         <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 10px 15px; border-radius: 8px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-            <i class="fas fa-leaf"></i> Режим экономии трафика включен
+            <i class="fas fa-leaf"></i> Режим экономии трафика
         </div>
     `;
     document.body.appendChild(message);
-
-    setTimeout(() => {
-        message.remove();
-    }, 3000);
+    setTimeout(() => message.remove(), 3000);
 }
 
-// Определяем тип соединения
-if ('connection' in navigator) {
-    const connection = navigator.connection;
-
-    connection.addEventListener('change', function () {
-        console.log('Тип соединения изменился:', connection.effectiveType);
-
-        // Можем адаптировать контент под скорость соединения
-        if (connection.effectiveType === '4g') {
-            // Загружаем больше контента
-        } else if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
-            // Упрощаем контент
-            document.querySelectorAll('.device-mockup, .hero-visual').forEach(el => {
-                el.style.opacity = '0.7';
-            });
-        }
-    });
+// Тестирование подключения (можно удалить после отладки)
+function testConnection() {
+    console.log('Тестирование подключения к Google Apps Script...');
+    
+    // Простой GET запрос для проверки
+    fetch(FORM_HANDLER_URL, { method: 'GET' })
+        .then(response => {
+            console.log('Сервер отвечает, статус:', response.status);
+            return response.text();
+        })
+        .then(text => {
+            console.log('Ответ сервера (первые 500 символов):', text.substring(0, 500));
+        })
+        .catch(error => {
+            console.error('Ошибка подключения:', error);
+        });
 }
+
+// Запуск теста при загрузке
+// window.addEventListener('load', () => {
+//     setTimeout(testConnection, 1000);
+// });
