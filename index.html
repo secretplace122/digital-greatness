@@ -6,42 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Greatness: Онлайн-присутствие для бизнеса в Солнечногорске</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta name="description"
         content="Создаем и настраиваем полное онлайн-присутствие для малого бизнеса: сайты, Яндекс.Карты, Google Бизнес, привлечение клиентов.">
+
     <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
     <!-- Мобильная оптимизация -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#2563eb">
     <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- Предотвращение номера телефона как ссылки в iOS -->
     <meta name="format-detection" content="telephone=no">
+
     <!-- Favicon для всех платформ -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Для современных браузеров -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
-
-    <!-- Apple устройства -->
     <link rel="apple-touch-icon" href="favicon.ico">
-
-    <!-- Windows Metro -->
     <meta name="msapplication-TileImage" content="favicon.ico">
     <meta name="msapplication-TileColor" content="#2563eb">
-
-    <!-- Android Chrome -->
     <meta name="theme-color" content="#2563eb">
-
 
     <!-- Manifest для PWA (опционально) -->
     <link rel="manifest" href="manifest.json">
@@ -113,7 +106,6 @@
             <div class="hero-visual">
                 <div class="device-mockup">
                     <div class="device-screen">
-                        <!-- Здесь будет CSS-анимация слайдов -->
                         <div class="screen-slide active">
                             <div class="slide-content">
                                 <h4>Ваш сайт</h4>
@@ -141,68 +133,107 @@
     <!-- Секция услуг -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Услуги и пакеты</h2>
-            <p class="section-subtitle">Выберите готовое решение или соберите свой пакет</p>
+            <div class="pricing-intro">
+                <h2>Услуги</h2>
+                <p>Обслуживание — от 5 000₽/мес для всех пакетов.</p>
+            </div>
 
             <div class="pricing-grid">
-                <!-- Пакет 1 -->
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Базовый</h3>
-                        <div class="price">от 15 000₽</div>
-                        <p class="price-subtitle">или 3 900₽/мес</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Сайт-визитка на вашем домене</li>
-                        <li><i class="fas fa-check"></i> Настройка Яндекс.Бизнес и Google Мой Бизнес</li>
-                        <li><i class="fas fa-check"></i> Базовая SEO-оптимизация</li>
-                        <li><i class="fas fa-check"></i> Подключение телефона, WhatsApp</li>
-                        <li><i class="fas fa-check"></i> Обучение работе с карточками</li>
-                        <li><i class="fas fa-times"></i> <span class="feature-disabled">Ведение карточек и
-                                отзывов</span></li>
-                        <li><i class="fas fa-times"></i> <span class="feature-disabled">Чат-бот для заявок</span></li>
-                    </ul>
-                    <button class="btn btn-outline select-plan" data-plan="Базовый">Выбрать пакет</button>
-                </div>
-
-                <!-- Пакет 2 (акцентный) -->
+                <!-- Пакет 1 - Стартовый (ГЛАВНЫЙ) -->
                 <div class="pricing-card featured">
-                    <div class="badge">Популярный</div>
+                    <div class="badge">ЛУЧШИЙ ВЫБОР</div>
                     <div class="pricing-header">
-                        <h3>Работающий</h3>
-                        <div class="price">6 900₽/мес</div>
-                        <p class="price-subtitle">+ стартовые 25 000₽</p>
+                        <h3>СТАРТОВЫЙ</h3>
+                        <div class="price">25 000₽</div>
+                        <p class="price-subtitle">обслуживание от 5 000₽/мес</p>
+                        <div class="price-note">Всё для старта за 7 дней</div>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> <strong>Всё из "Базового"</strong></li>
-                        <li><i class="fas fa-check"></i> Ежемесячное ведение карточек</li>
-                        <li><i class="fas fa-check"></i> Ответы на отзывы</li>
-                        <li><i class="fas fa-check"></i> Чат-бот в Telegram для заявок</li>
-                        <li><i class="fas fa-check"></i> Система онлайн-записи на сайте</li>
-                        <li><i class="fas fa-check"></i> Ежемесячный отчет по заявкам</li>
-                        <li><i class="fas fa-times"></i> <span class="feature-disabled">Настройка контекстной
-                                рекламы</span></li>
-                    </ul>
-                    <button class="btn btn-primary select-plan" data-plan="Работающий">Начать работать</button>
+
+                    <div class="pricing-includes">
+                        <h4><i class="fas fa-check-circle"></i> Всё что нужно для запуска:</h4>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> <strong>Создание сайта</strong> на вашем домене</li>
+                            <li><i class="fas fa-check"></i> <strong>Хостинг + индексация</strong> в Google и Яндекс
+                            </li>
+                            <li><i class="fas fa-check"></i> <strong>Интеграция с Telegram-ботом</strong> для заявок
+                            </li>
+                            <li><i class="fas fa-check"></i> <strong>SEO-оптимизация</strong> под ваш город</li>
+                            <li><i class="fas fa-check"></i> <strong>Создание карточки</strong> Яндекс.Бизнес</li>
+                            <li><i class="fas fa-check"></i> <strong>Оповещения о заявках</strong> в Telegram и почту
+                            </li>
+                            <li><i class="fas fa-check"></i> <strong>Запуск</strong> рекламной компании</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-features">
+                        <div class="feature">
+                            <i class="fas fa-bolt"></i>
+                            <span><strong>7-10 дней</strong> на запуск</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span><strong>30 дней</strong> гарантия</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-chart-line"></i>
+                            <span><strong>Первые заявки</strong> через 2 недели</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary select-plan" data-plan="Стартовый">
+                        <i class="fas fa-rocket"></i> Начать с этого пакета
+                    </button>
                 </div>
 
-                <!-- Пакет 3 -->
+                <!-- Пакет 2 - Продвинутый -->
                 <div class="pricing-card">
+                    <div class="badge badge-secondary">ДЛЯ РАСШИРЕНИЯ</div>
                     <div class="pricing-header">
-                        <h3>Привлекающий</h3>
-                        <div class="price">индивидуально</div>
-                        <p class="price-subtitle">абонентка + % от рекламы</p>
+                        <h3>ПРОДВИНУТЫЙ</h3>
+                        <div class="price">от 45 000₽</div>
+                        <p class="price-subtitle">обслуживание от 5 000₽/мес</p>
+                        <div class="price-note">Когда нужно больше</div>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> <strong>Всё из "Работающего"</strong></li>
-                        <li><i class="fas fa-check"></i> Настройка Яндекс.Директ/Google Ads</li>
-                        <li><i class="fas fa-check"></i> Таргетированная реклама в соцсетях</li>
-                        <li><i class="fas fa-check"></i> Аналитика и оптимизация кампаний</li>
-                        <li><i class="fas fa-check"></i> А/B тестирование объявлений</li>
-                        <li><i class="fas fa-check"></i> Регулярные стратегические сессии</li>
-                        <li><i class="fas fa-check"></i> Приоритетная поддержка 24/7</li>
-                    </ul>
-                    <button class="btn btn-outline select-plan" data-plan="Привлекающий">Обсудить проект</button>
+
+                    <div class="pricing-includes">
+                        <h4><i class="fas fa-check-circle"></i> Всё из Стартового +:</h4>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> <strong>Разработка и внедрение</strong> ИИ</li>
+                            <li><i class="fas fa-check"></i> <strong>Внедрение</strong> Яндекс кассы</li>
+                            <li><i class="fas fa-check"></i> <strong>Приоритетная поддержка</strong> 24/7</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-features">
+                        <div class="feature">
+                            <i class="fas fa-rocket"></i>
+                            <span><strong>10-14 дней</strong> на запуск</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-crown"></i>
+                            <span><strong>Приоритетная</strong> очередь</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-outline select-plan" data-plan="Продвинутый">
+                        <i class="fas fa-star"></i> Выбрать этот пакет
+                    </button>
+                </div>
+            </div>
+            <div class="pricing-notes">
+                <div class="note">
+                    <i class="fas fa-info-circle"></i>
+                    <p><strong>Что входит в ежемесячное обслуживание:</strong> аналитика метрик, запуск рекламы,
+                        поддержка сайта, обновление контента,
+                        ответы на отзывы, отчёты по трафику, техническая поддержка.</p>
+                </div>
+                <div class="note">
+                    <i class="fas fa-comment-dollar"></i>
+                    <p><strong>Рекламный бюджет:</strong> оплачивается отдельно.</p>
+                </div>
+                <div class="note">
+                    <i class="fas fa-comment-dollar"></i>
+                    <p><strong>Домен:</strong> оплачивается отдельно.</p>
                 </div>
             </div>
         </div>
@@ -219,8 +250,8 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Бесплатный аудит</h3>
-                        <p>Вы присылаете ссылку или название вашего бизнеса. Мы анализируем текущее присутствие и
-                            готовим 3-5 конкретных пунктов для улучшения.</p>
+                        <p>Вы присылаете ссылку или название вашего бизнеса. Мы анализируем ваше текущее присутствие и
+                            готовим план мероприятий для старта или улучшения текущего положения.</p>
                     </div>
                 </div>
 
@@ -228,7 +259,8 @@
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Обсуждение и план</h3>
-                        <p>Звонок или встреча. Определяем цели, бюджет, подбираем пакет. Заключаем договор (по желанию).
+                        <p>Звонок или встреча. Определяем цели, бюджет, подбираем пакет, определяемся с дизайном,
+                            подбираем контент. Встреча возможна на вашем рабочем месте в рамках города.
                         </p>
                     </div>
                 </div>
@@ -238,6 +270,7 @@
                     <div class="step-content">
                         <h3>Реализация</h3>
                         <p>Мы делаем всю техническую работу: покупаем домен, создаем сайт, настраиваем карточки,
+                            наполняем контентом, создаём бота, запускаем рекламу,
                             подключаем инструменты. Вы вносите правки на этапе макета.</p>
                     </div>
                 </div>
@@ -245,9 +278,8 @@
                 <div class="step">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <h3>Запуск и обучение</h3>
-                        <p>Сдаем вам "ключи" - доступы ко всему. Объясняем, как пользоваться (если нужно). Система
-                            начинает работать на вас 24/7.</p>
+                        <h3>Запуск</h3>
+                        <p>Анализируем входящий трафик, проводим А/В тесты, плавно переходим в боевоей режим.</p>
                     </div>
                 </div>
 
@@ -255,8 +287,10 @@
                     <div class="step-number">5</div>
                     <div class="step-content">
                         <h3>Поддержка и рост</h3>
-                        <p>Если в пакете: ежемесячно обновляем контент, отвечаем на отзывы, присылаем отчеты.
-                            Масштабируем при необходимости.</p>
+                        <p>В течении месяца, с начала работы, поддержка, правки, небольшие изменения в рамках
+                            оплаченного пакета, доступны
+                            бесплатно. По истечению бесплатного периуда все именения, правки, внедрения и т.п.
+                            оплачиваются отдельно. </p>
                     </div>
                 </div>
             </div>
@@ -270,20 +304,20 @@
                 <div class="audit-content">
                     <h2>Бесплатный аудит вашего онлайн-присутствия</h2>
                     <p>Пришлите ссылку на ваш бизнес в соцсетях, сайт или просто укажите сферу. В течение 24 часов мы
-                        проанализируем и предложим 3 конкретных шага для улучшения.</p>
+                        свяжемся с вами.</p>
 
                     <div class="audit-features">
                         <div class="audit-feature">
                             <i class="fas fa-bolt"></i>
-                            <span>Быстро: за 24 часа</span>
+                            <span>Быстрый ответ: до 24 часов</span>
                         </div>
                         <div class="audit-feature">
                             <i class="fas fa-gift"></i>
-                            <span>Бесплатно: без обязательств</span>
+                            <span>Бесплатно: выезд на ваше рабочее место</span>
                         </div>
                         <div class="audit-feature">
-                            <i class="fas fa-target"></i>
-                            <span>Полезно: только конкретика</span>
+                            <i class="fas fa-star"></i>
+                            <span>Полезно: обратная связь от опытных специалистов</span>
                         </div>
                     </div>
                 </div>
@@ -345,8 +379,8 @@
                     <ul>
                         <li><a href="https://t.me/digital_presence_bot" target="_blank"><i class="fab fa-telegram"></i>
                                 Telegram-бот</a></li>
-                        <li><a href="mailto:hello@digital-presence.ru"><i class="fas fa-envelope"></i>
-                                hello@digital-presence.ru</a></li>
+                        <li><a href="mailto:secretplace122.95@gmail.com"><i class="fas fa-envelope"></i>
+                                secretplace122.95@gmail.com</a></li>
                         <li><a href="#"><i class="fas fa-phone"></i> [номер по запросу]</a></li>
                     </ul>
                 </div>
@@ -360,7 +394,9 @@
 
             <div class="footer-bottom">
                 <p>&copy; <span id="currentYear"></span> Digital Greatness. Солнечногорск.</p>
-                <p>Работаем с ИП и самозанятыми</p>
+                <p>Digital Greatness - В переводе с английского "Цифровое величие" - проект, цель которого помочь
+                    самозанятым и владельцам малого бизнеса повысить своё присутствие в интернете, тем самым
+                    повысить узнаваемость, траифк и продажи. Digital Greatness не является юридическим лицом. </p>
             </div>
         </div>
     </footer>
@@ -370,8 +406,8 @@
         <div class="modal-content">
             <span class="modal-close">&times;</span>
             <h3>Вы выбрали пакет: <span id="selectedPlanName"></span></h3>
-            <p>Спасибо за выбор! С вами свяжется наш специалист в течение 2 часов для уточнения деталей.</p>
-            <p>А пока можете отправить базовую информацию через форму аудита выше.</p>
+            <p>Отличный выбор!</p>
+            <p>На</p>
             <button class="btn btn-primary" id="goToAudit">Перейти к форме</button>
         </div>
     </div>
