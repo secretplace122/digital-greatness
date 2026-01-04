@@ -262,10 +262,10 @@ h3 {
 .city-highlight::after {
     content: '';
     position: absolute;
-    bottom: 5px;
+    bottom: 1px;
     left: 0;
     width: 100%;
-    height: 8px;
+    height: 5px;
     background-color: rgba(37, 99, 235, 0.2);
     z-index: -1;
 }
@@ -723,7 +723,7 @@ h3 {
 
 .pricing-notes {
     max-width: 800px;
-    margin: 100px 0px 10px;
+    margin: 40px 0px 10px;
     display: grid;
     gap: 20px;
 }
@@ -974,8 +974,8 @@ section:nth-child(4) {
     }
 
     .hero {
-        padding: 120px 0 40px;
-        min-height: calc(100vh - 80px);
+        padding: 10px 0;
+        min-height: calc(100vh - 280px);
         display: flex;
         align-items: center;
     }
@@ -1029,11 +1029,11 @@ section:nth-child(4) {
     }
 
     .services {
-        padding: 60px 0;
+        padding: 2px 0;
     }
 
     .pricing-card {
-        padding: 20px;
+        padding: 20px 5px;
     }
 
     .pricing-header {
@@ -1057,7 +1057,7 @@ section:nth-child(4) {
     }
 
     .process {
-        padding: 60px 0;
+        padding: 10px 0;
     }
 
     .step {
