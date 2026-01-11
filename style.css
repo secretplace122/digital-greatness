@@ -1,6 +1,3 @@
-/* style.css - Оптимизированная версия */
-
-/* Сброс и базовые стили */
 * {
     margin: 0;
     padding: 0;
@@ -35,10 +32,9 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 5px;
 }
 
-/* Типография */
 h1,
 h2,
 h3,
@@ -75,7 +71,6 @@ h3 {
     font-size: 1.1rem;
 }
 
-/* Кнопки */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -148,7 +143,6 @@ h3 {
     color: var(--primary-color);
 }
 
-/* Шапка */
 .header {
     position: fixed;
     top: 0;
@@ -231,7 +225,6 @@ h3 {
     cursor: pointer;
 }
 
-/* Герой-секция */
 .hero {
     padding: 150px 0 80px;
     background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 100%);
@@ -307,7 +300,6 @@ h3 {
     margin-top: 5px;
 }
 
-/* Устройство-макет в герое */
 .device-mockup {
     background: white;
     border-radius: 24px;
@@ -364,7 +356,6 @@ h3 {
     color: #d1d5db;
 }
 
-/* Секция услуг */
 .services {
     padding: 100px 0;
     background-color: var(--bg-light);
@@ -445,7 +436,7 @@ h3 {
 .pricing-features li {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
     margin-bottom: 12px;
     font-size: 0.95rem;
 }
@@ -463,7 +454,6 @@ h3 {
     opacity: 0.7;
 }
 
-/* Секция процесса */
 .process {
     padding: 100px 0;
 }
@@ -521,7 +511,6 @@ h3 {
     margin-bottom: 10px;
 }
 
-/* Форма аудита */
 .audit {
     padding: 100px 0;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -605,7 +594,6 @@ h3 {
     text-align: center;
 }
 
-/* Футер */
 .footer {
     background-color: var(--bg-dark);
     color: white;
@@ -669,7 +657,6 @@ h3 {
     margin-bottom: 5px;
 }
 
-/* Модальное окно */
 .modal {
     display: none;
     position: fixed;
@@ -710,7 +697,6 @@ h3 {
     color: var(--primary-color);
 }
 
-/* Дополнительные стили для новых пакетов */
 .pricing-intro {
     text-align: center;
     max-width: 800px;
@@ -776,7 +762,7 @@ h3 {
 
 .pricing-features li {
     position: relative;
-    padding-left: 28px;
+    padding-left: 18px;
 }
 
 .pricing-features li i {
@@ -787,7 +773,7 @@ h3 {
 
 .pricing-includes {
     margin: 20px 0;
-    padding: 15px;
+    padding: 15px 0px;
     border-radius: 8px;
 }
 
@@ -810,7 +796,6 @@ h3 {
     font-style: italic;
 }
 
-/* Анимации */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -827,7 +812,6 @@ h3 {
     animation: fadeInUp 0.6s ease forwards;
 }
 
-/* Задержки для появления */
 section:nth-child(1) {
     animation-delay: 0.1s;
 }
@@ -844,7 +828,6 @@ section:nth-child(4) {
     animation-delay: 0.4s;
 }
 
-/* Адаптивность */
 @media (max-width: 992px) {
     .hero .container {
         grid-template-columns: 1fr;
@@ -1198,7 +1181,6 @@ section:nth-child(4) {
     }
 }
 
-/* Базовые стили слайда */
 .screen-slide {
     position: absolute;
     top: 0;
@@ -1215,7 +1197,6 @@ section:nth-child(4) {
     background-repeat: no-repeat;
 }
 
-/* Затемнение поверх изображения */
 .screen-slide::before {
     content: '';
     position: absolute;
@@ -1227,7 +1208,6 @@ section:nth-child(4) {
     z-index: 1;
 }
 
-/* Контент поверх всего */
 .slide-content {
     position: relative;
     z-index: 2;
@@ -1236,7 +1216,6 @@ section:nth-child(4) {
     padding: 20px;
 }
 
-/* Фоновые изображения для каждого слайда */
 .slide-1 {
     background-image: url('images/slide-website.jpg');
 }
@@ -1249,7 +1228,6 @@ section:nth-child(4) {
     background-image: url('images/slide-telegram.jpg');
 }
 
-/* Активный слайд */
 .screen-slide.active {
     opacity: 1;
 }

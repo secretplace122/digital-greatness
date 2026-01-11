@@ -1,15 +1,8 @@
-// =============================================
-// КОНФИГУРАЦИЯ
-// =============================================
 const FORM_HANDLER_URL = 'https://script.google.com/macros/s/AKfycbxV5Uwpn-4ZIR0v_wjhYjh9nvNnD7898FUnz22utve3n4lW5JPxgQJ-BU6Zh2ZXQqPX/exec';
 
-// =============================================
-// ОСНОВНОЙ КОД ПРИ ЗАГРУЗКЕ
-// =============================================
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Digital Greatness инициализирован');
 
-    // 1. Мобильное меню
     const menuToggle = document.getElementById('menuToggle');
     const nav = document.querySelector('.nav');
 
@@ -22,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Закрытие меню при клике на ссылку
     const navLinks = document.querySelectorAll('.nav-list a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -33,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 2. Анимация слайдов в устройстве
     const slides = document.querySelectorAll('.screen-slide');
     let currentSlide = 0;
 
@@ -45,12 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Запуск слайдшоу каждые 3 секунды
     if (slides.length > 0) {
         setInterval(showNextSlide, 3000);
     }
 
-    // 3. Выбор плана (кнопки "Выбрать пакет")
     const selectPlanButtons = document.querySelectorAll('.select-plan');
     const planModal = document.getElementById('planModal');
     const selectedPlanName = document.getElementById('selectedPlanName');
@@ -70,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Закрытие модального окна
     if (modalClose) {
         modalClose.addEventListener('click', function () {
             if (planModal) {
@@ -80,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Клик вне модального окна
     window.addEventListener('click', function (event) {
         if (planModal && event.target === planModal) {
             planModal.style.display = 'none';
@@ -88,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Переход к форме аудита
     if (goToAudit) {
         goToAudit.addEventListener('click', function () {
             if (planModal) {
@@ -96,12 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.body.style.overflow = 'auto';
             }
 
-            // Плавная прокрутка к форме
             document.getElementById('audit').scrollIntoView({
                 behavior: 'smooth'
             });
 
-            // Фокус на поле ввода
             setTimeout(() => {
                 const businessInput = document.getElementById('business');
                 if (businessInput) {
@@ -111,13 +95,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 4. Обработка формы аудита (ОБНОВЛЕНО!)
     const auditForm = document.getElementById('auditForm');
     if (auditForm) {
         auditForm.addEventListener('submit', handleFormSubmit);
     }
 
-    // 5. Плавная прокрутка для якорных ссылок
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -134,13 +116,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 6. Обновление года в футере
     const currentYearElement = document.getElementById('currentYear');
     if (currentYearElement) {
         currentYearElement.textContent = new Date().getFullYear();
     }
 
-    // 7. Анимация при скролле
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
@@ -158,13 +138,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 8. Мобильные оптимизации
     optimizeForMobile();
 });
 
-// =============================================
-// ОБРАБОТКА ФОРМЫ (ОСНОВНАЯ ФУНКЦИЯ)
-// =============================================
 async function handleFormSubmit(e) {
     e.preventDefault();
     
@@ -172,11 +148,9 @@ async function handleFormSubmit(e) {
     const submitButton = auditForm.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
     
-    // Блокируем повторную отправку
     submitButton.disabled = true;
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
     
-    // Собираем данные
     const formData = {
         business: document.getElementById('business')?.value.trim() || '',
         link: document.getElementById('link')?.value.trim() || '',
@@ -185,7 +159,6 @@ async function handleFormSubmit(e) {
         timestamp: new Date().toISOString()
     };
     
-    // Валидация
     if (!formData.business || !formData.contact) {
         showMessage('Пожалуйста, заполните все обязательные поля', 'error');
         submitButton.disabled = false;
@@ -196,30 +169,24 @@ async function handleFormSubmit(e) {
     try {
         console.log('Отправка данных:', formData);
         
-        // Отправка на Google Apps Script
-        // Используем fetch с no-cors для обхода CORS
         const response = await fetch(FORM_HANDLER_URL, {
             method: 'POST',
-            mode: 'no-cors', // Важно для Google Apps Script!
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData)
         });
         
-        // При mode: 'no-cors' мы не получаем ответ, но запрос выполняется
         console.log('Запрос отправлен (no-cors mode)');
         
-        // Показываем успех
         showMessage(
             '✅ Заявка отправлена! Мы свяжемся с вами в течение 24 часов.',
             'success'
         );
         
-        // Анимация успеха
         animateSuccess();
         
-        // Сбрасываем форму
         setTimeout(() => {
             auditForm.reset();
         }, 1000);
@@ -227,7 +194,6 @@ async function handleFormSubmit(e) {
     } catch (error) {
         console.error('Ошибка отправки:', error);
         
-        // Пробуем резервный метод
         const fallbackSuccess = await tryFallback(formData);
         
         if (fallbackSuccess) {
@@ -245,25 +211,16 @@ async function handleFormSubmit(e) {
         }
         
     } finally {
-        // Разблокируем кнопку через 2 секунды
         setTimeout(() => {
             submitButton.disabled = false;
             submitButton.innerHTML = originalText;
         }, 2000);
     }
 }
-
-// =============================================
-// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-// =============================================
-
-// Показать сообщение
 function showMessage(text, type = 'info') {
-    // Удаляем старое сообщение
     const oldMsg = document.querySelector('.form-message');
     if (oldMsg) oldMsg.remove();
     
-    // Создаем новое
     const message = document.createElement('div');
     message.className = `form-message form-message-${type}`;
     
@@ -298,14 +255,12 @@ function showMessage(text, type = 'info') {
     
     document.body.appendChild(message);
     
-    // Автоудаление через 5 секунд
     setTimeout(() => {
         message.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => message.remove(), 300);
     }, 5000);
 }
 
-// Анимация успеха
 function animateSuccess() {
     const checkmark = document.createElement('div');
     checkmark.innerHTML = `
@@ -337,16 +292,13 @@ function animateSuccess() {
     }, 1000);
 }
 
-// Резервный метод отправки (через Telegram напрямую)
 async function tryFallback(formData) {
     try {
-        // ВНИМАНИЕ: Токен будет виден в коде!
-        // Используйте только для тестирования или создайте отдельный бот
-        const TEST_BOT_TOKEN = ''; // Оставьте пустым для безопасности
+        const TEST_BOT_TOKEN = '';
         const TEST_CHAT_ID = '';
         
         if (!TEST_BOT_TOKEN || !TEST_CHAT_ID) {
-            return false; // Не отправляем без токена
+            return false;
         }
         
         const message = `📊 Заявка (резервный метод):\n\n` +
@@ -374,14 +326,9 @@ async function tryFallback(formData) {
     }
 }
 
-// =============================================
-// МОБИЛЬНЫЕ ОПТИМИЗАЦИИ
-// =============================================
 function optimizeForMobile() {
-    // 1. Улучшаем touch события
     document.addEventListener('touchstart', function () { }, { passive: true });
     
-    // 2. Предотвращаем двойной тап для зума
     let lastTouchEnd = 0;
     document.addEventListener('touchend', function (event) {
         const now = Date.now();
@@ -391,13 +338,11 @@ function optimizeForMobile() {
         lastTouchEnd = now;
     }, false);
     
-    // 3. Определяем мобильное устройство
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
         document.documentElement.classList.add('mobile-device');
         
-        // Убираем hover эффекты
         const style = document.createElement('style');
         style.textContent = `
             @media (hover: none) and (pointer: coarse) {
@@ -406,7 +351,6 @@ function optimizeForMobile() {
                 }
             }
             
-            /* Анимации для сообщений */
             @keyframes slideIn {
                 from { transform: translateX(100%); opacity: 0; }
                 to { transform: translateX(0); opacity: 1; }
@@ -425,7 +369,6 @@ function optimizeForMobile() {
         `;
         document.head.appendChild(style);
         
-        // 4. Адаптивная навигация для touch
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.querySelector('.nav');
         
@@ -441,7 +384,6 @@ function optimizeForMobile() {
             }, { passive: false });
         }
         
-        // 5. Адаптивный ввод для iOS
         const inputs = document.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('focus', function () {
@@ -455,7 +397,6 @@ function optimizeForMobile() {
                 }
             });
             
-            // Оптимизация для iOS
             input.setAttribute('autocomplete', 'off');
             input.setAttribute('autocorrect', 'off');
             input.setAttribute('spellcheck', 'false');
@@ -466,7 +407,6 @@ function optimizeForMobile() {
             }
         });
         
-        // 6. Touch-свайп для меню
         let touchStartX = 0;
         document.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
@@ -486,7 +426,6 @@ function optimizeForMobile() {
         });
     }
     
-    // 7. Ленивая загрузка изображений
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -506,7 +445,6 @@ function optimizeForMobile() {
         });
     }
     
-    // 8. Оптимизация для медленных сетей
     if ('connection' in navigator) {
         const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
         
@@ -526,9 +464,6 @@ function optimizeForMobile() {
     }
 }
 
-// =============================================
-// УТИЛИТЫ
-// =============================================
 function showSaveDataMessage() {
     const message = document.createElement('div');
     message.innerHTML = `
@@ -540,11 +475,9 @@ function showSaveDataMessage() {
     setTimeout(() => message.remove(), 3000);
 }
 
-// Тестирование подключения (можно удалить после отладки)
 function testConnection() {
     console.log('Тестирование подключения к Google Apps Script...');
     
-    // Простой GET запрос для проверки
     fetch(FORM_HANDLER_URL, { method: 'GET' })
         .then(response => {
             console.log('Сервер отвечает, статус:', response.status);
@@ -557,8 +490,3 @@ function testConnection() {
             console.error('Ошибка подключения:', error);
         });
 }
-
-// Запуск теста при загрузке
-// window.addEventListener('load', () => {
-//     setTimeout(testConnection, 1000);
-// });
