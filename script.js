@@ -143,14 +143,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function handleFormSubmit(e) {
     e.preventDefault();
-    
+
     const auditForm = e.target;
     const submitButton = auditForm.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
-    
+
     submitButton.disabled = true;
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
-    
+
     const formData = {
         business: document.getElementById('business')?.value.trim() || '',
         link: document.getElementById('link')?.value.trim() || '',
@@ -158,17 +158,17 @@ async function handleFormSubmit(e) {
         source: 'digital-greatness.ru',
         timestamp: new Date().toISOString()
     };
-    
+
     if (!formData.business || !formData.contact) {
         showMessage('Пожалуйста, заполните все обязательные поля', 'error');
         submitButton.disabled = false;
         submitButton.innerHTML = originalText;
         return;
     }
-    
+
     try {
         console.log('Отправка данных:', formData);
-        
+
         const response = await fetch(FORM_HANDLER_URL, {
             method: 'POST',
             mode: 'no-cors',
@@ -177,25 +177,25 @@ async function handleFormSubmit(e) {
             },
             body: JSON.stringify(formData)
         });
-        
+
         console.log('Запрос отправлен (no-cors mode)');
-        
+
         showMessage(
             '✅ Заявка отправлена! Мы свяжемся с вами в течение 24 часов.',
             'success'
         );
-        
+
         animateSuccess();
-        
+
         setTimeout(() => {
             auditForm.reset();
         }, 1000);
-        
+
     } catch (error) {
         console.error('Ошибка отправки:', error);
-        
+
         const fallbackSuccess = await tryFallback(formData);
-        
+
         if (fallbackSuccess) {
             showMessage(
                 '✅ Заявка отправлена (резервный метод)!',
@@ -209,7 +209,7 @@ async function handleFormSubmit(e) {
                 'error'
             );
         }
-        
+
     } finally {
         setTimeout(() => {
             submitButton.disabled = false;
@@ -220,16 +220,16 @@ async function handleFormSubmit(e) {
 function showMessage(text, type = 'info') {
     const oldMsg = document.querySelector('.form-message');
     if (oldMsg) oldMsg.remove();
-    
+
     const message = document.createElement('div');
     message.className = `form-message form-message-${type}`;
-    
-    const icon = type === 'success' ? 'fa-check-circle' : 
-                 type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
-    
-    const bgColor = type === 'success' ? '#10b981' : 
-                   type === 'error' ? '#ef4444' : '#3b82f6';
-    
+
+    const icon = type === 'success' ? 'fa-check-circle' :
+        type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+
+    const bgColor = type === 'success' ? '#10b981' :
+        type === 'error' ? '#ef4444' : '#3b82f6';
+
     message.innerHTML = `
         <div style="
             position: fixed;
@@ -252,9 +252,9 @@ function showMessage(text, type = 'info') {
             <span>${text}</span>
         </div>
     `;
-    
+
     document.body.appendChild(message);
-    
+
     setTimeout(() => {
         message.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => message.remove(), 300);
@@ -282,9 +282,9 @@ function animateSuccess() {
             <i class="fas fa-check" style="color: white; font-size: 40px;"></i>
         </div>
     `;
-    
+
     document.body.appendChild(checkmark);
-    
+
     setTimeout(() => {
         checkmark.style.opacity = '0';
         checkmark.style.transition = 'opacity 0.5s ease';
@@ -296,16 +296,16 @@ async function tryFallback(formData) {
     try {
         const TEST_BOT_TOKEN = '';
         const TEST_CHAT_ID = '';
-        
+
         if (!TEST_BOT_TOKEN || !TEST_CHAT_ID) {
             return false;
         }
-        
+
         const message = `📊 Заявка (резервный метод):\n\n` +
             `Бизнес: ${formData.business}\n` +
             `Контакты: ${formData.contact}\n` +
             `Время: ${new Date().toLocaleString('ru-RU')}`;
-        
+
         const response = await fetch(`https://api.telegram.org/bot${TEST_BOT_TOKEN}/sendMessage`, {
             method: 'POST',
             headers: {
@@ -317,9 +317,9 @@ async function tryFallback(formData) {
                 parse_mode: 'HTML'
             })
         });
-        
+
         return response.ok;
-        
+
     } catch (error) {
         console.error('Ошибка резервного метода:', error);
         return false;
@@ -328,7 +328,7 @@ async function tryFallback(formData) {
 
 function optimizeForMobile() {
     document.addEventListener('touchstart', function () { }, { passive: true });
-    
+
     let lastTouchEnd = 0;
     document.addEventListener('touchend', function (event) {
         const now = Date.now();
@@ -337,12 +337,12 @@ function optimizeForMobile() {
         }
         lastTouchEnd = now;
     }, false);
-    
+
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
+
     if (isMobile) {
         document.documentElement.classList.add('mobile-device');
-        
+
         const style = document.createElement('style');
         style.textContent = `
             @media (hover: none) and (pointer: coarse) {
@@ -368,10 +368,10 @@ function optimizeForMobile() {
             }
         `;
         document.head.appendChild(style);
-        
+
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.querySelector('.nav');
-        
+
         if (menuToggle && nav) {
             menuToggle.addEventListener('touchstart', function (e) {
                 e.preventDefault();
@@ -379,11 +379,11 @@ function optimizeForMobile() {
                 this.innerHTML = nav.classList.contains('active')
                     ? '<i class="fas fa-times"></i>'
                     : '<i class="fas fa-bars"></i>';
-                
+
                 document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
             }, { passive: false });
         }
-        
+
         const inputs = document.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('focus', function () {
@@ -396,26 +396,26 @@ function optimizeForMobile() {
                     }, 300);
                 }
             });
-            
+
             input.setAttribute('autocomplete', 'off');
             input.setAttribute('autocorrect', 'off');
             input.setAttribute('spellcheck', 'false');
-            
+
             if (input.type === 'tel') {
                 input.setAttribute('pattern', '[0-9]*');
                 input.setAttribute('inputmode', 'numeric');
             }
         });
-        
+
         let touchStartX = 0;
         document.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
         });
-        
+
         document.addEventListener('touchend', e => {
             const touchEndX = e.changedTouches[0].screenX;
             const swipeThreshold = 50;
-            
+
             if (touchStartX - touchEndX > swipeThreshold && nav && nav.classList.contains('active')) {
                 nav.classList.remove('active');
                 if (menuToggle) {
@@ -425,7 +425,7 @@ function optimizeForMobile() {
             }
         });
     }
-    
+
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -439,20 +439,20 @@ function optimizeForMobile() {
                 }
             });
         });
-        
+
         document.querySelectorAll('img[data-src]').forEach(img => {
             imageObserver.observe(img);
         });
     }
-    
+
     if ('connection' in navigator) {
         const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        
+
         if (connection) {
             if (connection.saveData === true) {
                 console.log('Режим экономии трафика включен');
             }
-            
+
             connection.addEventListener('change', function () {
                 if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
                     document.querySelectorAll('.device-mockup, .hero-visual').forEach(el => {
@@ -477,7 +477,7 @@ function showSaveDataMessage() {
 
 function testConnection() {
     console.log('Тестирование подключения к Google Apps Script...');
-    
+
     fetch(FORM_HANDLER_URL, { method: 'GET' })
         .then(response => {
             console.log('Сервер отвечает, статус:', response.status);
@@ -490,3 +490,22 @@ function testConnection() {
             console.error('Ошибка подключения:', error);
         });
 }
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+
+        if (href.startsWith('http') || href === '#' || href === '#!') return;
+
+        if (href.includes('#')) {
+            e.preventDefault();
+            const [page, anchor] = href.split('#');
+            if (page) {
+                window.location.href = page + '#' + anchor;
+            } else if (document.querySelector('#' + anchor)) {
+                document.querySelector('#' + anchor).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+});

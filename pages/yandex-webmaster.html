@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=106151381', 'ym');
+
+        ym(106151381, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/106151381" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+
+    <title>Яндекс.Вебмастер: панель управления видимостью сайта | Digital Greatness</title>
+    <meta name="description"
+        content="Как использовать Яндекс.Вебмастер для контроля индексации, исправления ошибок и улучшения позиций в поиске">
+
+    <link rel="canonical" href="https://digital-greatness.ru/pages/yandex-webmaster.html">
+
+    <meta property="og:title" content="Яндекс.Вебмастер: панель управления видимостью сайта">
+    <meta property="og:description"
+        content="Полное руководство по Яндекс.Вебмастеру: индексация, ошибки и оптимизация сайта для поиска">
+    <meta property="og:image" content="https://digital-greatness.ru/images/blog/yandex-webmaster.jpg">
+    <meta property="og:url" content="https://digital-greatness.ru/pages/yandex-webmaster.html">
+    <meta property="og:type" content="article">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="article.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">DG</span>
+                    <span class="logo-text">Digital Greatness</span>
+                </a>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html#services">Услуги</a></li>
+                        <li><a href="../index.html#process">Как работаем</a></li>
+                        <li><a href="blog.html">Полезная информация</a></li>
+                        <li><a href="#footer">Контакты</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a href="../index.html#audit" class="btn btn-primary btn-small">Бесплатный аудит</a>
+            </div>
+        </div>
+    </header>
+
+    <article class="article-single">
+        <div class="container">
+            <!-- Хлебные крошки -->
+            <nav class="breadcrumbs">
+                <a href="../index.html">Главная</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="blog.html">Полезная информация</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Яндекс.Вебмастер</span>
+            </nav>
+
+            <!-- Заголовок статьи -->
+            <header class="article-header">
+                <div class="article-category">SEO и продвижение</div>
+                <h1 class="article-title">Яндекс.Вебмастер: панель управления видимостью вашего сайта в поиске</h1>
+                <div class="article-meta">
+                    <div class="author">
+                        <div class="author-avatar">DG</div>
+                        <div>
+                            <span class="author-name">Digital Greatness Team</span>
+                            <time datetime="2026-01-14">14 января 2026 • 5 мин чтения</time>
+                        </div>
+                    </div>
+                    <div class="article-share">
+                        <span>Поделиться:</span>
+                        <a href="#" class="share-btn" data-social="telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="share-btn" data-social="vk"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="share-btn" data-social="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Изображение статьи -->
+            <div class="article-featured-image">
+                <img src="../images/blog/blog_bg.jpg" alt="Яндекс.Вебмастер для управления сайтом">
+            </div>
+
+            <!-- Контент статьи -->
+            <div class="article-content">
+                <!-- Оглавление -->
+                <aside class="table-of-contents">
+                    <h3><i class="fas fa-list"></i> Содержание</h3>
+                    <ul>
+                        <li><a href="#section1">Последний критический кабинет</a></li>
+                        <li><a href="#section2">Что это такое?</a></li>
+                        <li><a href="#section3">Три главные причины использовать</a></li>
+                        <li><a href="#section4">1. Видите сайт глазами робота</a></li>
+                        <li><a href="#section5">2. Получаете прямые сообщения</a></li>
+                        <li><a href="#section6">3. Влияете на индексацию</a></li>
+                        <li><a href="#section7">Что делать прямо сейчас?</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Основной текст -->
+                <div class="article-body">
+                    <p class="article-intro">Вы создали сайт, добавили его в Яндекс.Бизнес и Метрику. Кажется, всё
+                        сделали. Но есть еще один критически важный кабинет, который напрямую влияет на то, увидит ли
+                        Яндекс ваш сайт и насколько хорошо.</p>
+
+                    <section id="section1" class="article-section">
+                        <h2>Последний критический кабинет</h2>
+                        <p>Это Яндекс.Вебмастер (Search Console). Простыми словами, это «служба технической поддержки»
+                            между вашим сайтом и поисковым роботом Яндекса.</p>
+
+                        <div class="article-comparison">
+                            <div class="comparison-item">
+                                <div class="comparison-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="comparison-content">
+                                    <h4>Яндекс.Метрика</h4>
+                                    <p>Показывает поведение людей на сайте</p>
+                                </div>
+                            </div>
+
+                            <div class="comparison-arrow">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+
+                            <div class="comparison-item">
+                                <div class="comparison-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="comparison-content">
+                                    <h4>Яндекс.Вебмастер</h4>
+                                    <p>Показывает поведение робота и его «мнение» о сайте</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section2" class="article-section">
+                        <h2>Зачем это нужно, если у вас есть сайт? Три главные причины:</h2>
+                    </section>
+
+                    <section id="section3" class="article-section">
+                        <div class="reasons-grid">
+                            <div class="reason">
+                                <div class="reason-number">1</div>
+                                <div class="reason-content">
+                                    <h3>Видите сайт глазами поискового робота</h3>
+                                    <p>Понимаете, что Яндекс думает о вашем сайте и какие проблемы видит</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">2</div>
+                                <div class="reason-content">
+                                    <h3>Получаете прямые сообщения от Яндекса</h3>
+                                    <p>Узнаете о критических проблемах до того, как они навредят позициям</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">3</div>
+                                <div class="reason-content">
+                                    <h3>Напрямую влияете на индексацию</h3>
+                                    <p>Управляете тем, какие страницы попадают в поиск и как быстро</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section4" class="article-section">
+                        <h2>1. Вы видите сайт глазами поискового робота</h2>
+
+                        <div class="article-tip">
+                            <i class="fas fa-eye"></i>
+                            <p>Робот Яндекса (краулер) — это главный «читатель» вашего сайта. Именно он решает,
+                                насколько ваш сайт полезен, и стоит ли показывать его в поиске.</p>
+                        </div>
+
+                        <div class="webmaster-features">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Сколько страниц проиндексировано</h4>
+                                    <p>Увидите, какие страницы добавлены в базу Яндекса, а какие — нет. Возможно, целые
+                                        важные разделы остались «невидимыми» для поиска.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Какие ошибки робот встретил</h4>
+                                    <p>«404 — страница не найдена», проблемы с загрузкой, битые ссылки. Все технические
+                                        проблемы в одном месте.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-clone"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Технические параметры сайта</h4>
+                                    <p>Страницы с дублирующимся содержимым, проблемы с мета-тегами, неоптимизированные
+                                        заголовки.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section5" class="article-section">
+                        <h2>2. Вы получаете прямые сообщения от Яндекса</h2>
+
+                        <div class="article-warning">
+                            <i class="fas fa-bell"></i>
+                            <p><strong>Представьте:</strong> на вашем сайте появился вирус, из-за которого Яндекс начал
+                                блокировать его в поиске. Как вы об этом узнаете?</p>
+                        </div>
+
+                        <div class="notification-system">
+                            <div class="notification-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-bug"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Проблема на сайте</h4>
+                                    <p>Вирус, взлом, спам-ссылки, другие нарушения</p>
+                                </div>
+                            </div>
+
+                            <div class="notification-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+
+                            <div class="notification-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Уведомление в Вебмастере</h4>
+                                    <p>Официальное сообщение с деталями проблемы</p>
+                                </div>
+                            </div>
+
+                            <div class="notification-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+
+                            <div class="notification-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-chart-line-down"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Снижение позиций</h4>
+                                    <p>Сайт теряет трафик из поиска</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-insight">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p><strong>Игнорируя этот кабинет, вы рискуете пропустить критические проблемы, которые
+                                    могут «убить» все ваши позиции в поиске.</strong></p>
+                        </div>
+                    </section>
+
+                    <section id="section6" class="article-section">
+                        <h2>3. Вы напрямую влияете на индексацию</h2>
+
+                        <div class="article-tip">
+                            <i class="fas fa-magic"></i>
+                            <p>Это самая мощная функция Вебмастера. Вы не просто наблюдаете, а действуете.</p>
+                        </div>
+
+                        <div class="influence-actions">
+                            <div class="action">
+                                <div class="action-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h4>Ручная отправка на индексацию</h4>
+                                    <p>Только что опубликовали важную статью или добавили новую услугу? Не ждите недели,
+                                        пока робот сам ее найдет. «Подскажите» ему.</p>
+                                    <div class="action-example">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Без Вебмастера: 1-4 недели</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <i class="fas fa-bolt"></i>
+                                        <span>С Вебмастером: 1-3 дня</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action">
+                                <div class="action-icon">
+                                    <i class="fas fa-ban"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h4>Исключение страниц из индексации</h4>
+                                    <p>Сообщите, какие страницы не нужно индексировать (например, служебные, тестовые
+                                        или дублирующиеся).</p>
+                                </div>
+                            </div>
+
+                            <div class="action">
+                                <div class="action-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h4>Контроль сниппетов</h4>
+                                    <p>Проверьте, как выглядит ваше описание в поисковой выдаче. Исправьте, если оно
+                                        некрасивое или неинформативное.</p>
+                                </div>
+                            </div>
+
+                            <div class="action">
+                                <div class="action-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h4>SEO-аналитика</h4>
+                                    <p>Посмотрите, по каким запросам вас находят и на каких позициях вы находитесь. Это
+                                        основа для стратегии продвижения.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section7" class="article-section">
+                        <h2>Что нужно сделать прямо сейчас? Простой план на 15 минут:</h2>
+
+                        <div class="quick-plan">
+                            <div class="plan-step">
+                                <div class="step-header">
+                                    <span class="step-number">1</span>
+                                    <h3>Добавьте сайт в Яндекс.Вебмастер</h3>
+                                </div>
+                                <p><strong>Это бесплатно.</strong> Нужно подтвердить права на сайт (обычно добавляя
+                                    специальный код в заголовок сайта или файл на хостинге).</p>
+                                <div class="step-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <a href="https://webmaster.yandex.ru" target="_blank"
+                                        rel="noopener">https://webmaster.yandex.ru</a>
+                                </div>
+                            </div>
+
+                            <div class="plan-step">
+                                <div class="step-header">
+                                    <span class="step-number">2</span>
+                                    <h3>Добавьте карту сайта (sitemap.xml)</h3>
+                                </div>
+                                <p>Это файл-оглавление, который вы отдаете роботу. Он поможет ему быстрее и полнее
+                                    понять структуру вашего сайта.</p>
+                                <div class="step-tip">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Обычно находится по адресу: вашсайт.ru/sitemap.xml</span>
+                                </div>
+                            </div>
+
+                            <div class="plan-step">
+                                <div class="step-header">
+                                    <span class="step-number">3</span>
+                                    <h3>Проверьте безопасность</h3>
+                                </div>
+                                <p>Откройте вкладку «Безопасность и нарушения». Убедитесь, что там нет красных
+                                    предупреждений.</p>
+                                <div class="status-indicator">
+                                    <div class="status-good">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Зеленый = всё хорошо</span>
+                                    </div>
+                                    <div class="status-bad">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <span>Красный = срочно решать</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plan-step">
+                                <div class="step-header">
+                                    <span class="step-number">4</span>
+                                    <h3>Запустите диагностику</h3>
+                                </div>
+                                <p>Загляните в «Диагностику сайта». Исправьте критические ошибки, если они есть.</p>
+                                <div class="common-issues">
+                                    <div class="issue">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>Проблемы с мобильной версией</span>
+                                    </div>
+                                    <div class="issue">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Медленная загрузка</span>
+                                    </div>
+                                    <div class="issue">
+                                        <i class="fas fa-link"></i>
+                                        <span>Битые ссылки</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-conclusion-final">
+                            <h3><i class="fas fa-gavel"></i> Вывод:</h3>
+                            <p><strong>Яндекс.Вебмастер — панель управления видимостью вашего сайта в самом популярном
+                                    поисковике страны.</strong></p>
+
+                            <div class="final-checklist">
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Обязательный, базовый инструмент</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Техническая поддержка для поискового робота</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Раннее предупреждение о проблемах</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Прямое влияние на индексацию</span>
+                                </div>
+                            </div>
+
+                            <div class="final-statement">
+                                <p><strong>Если вы хотите, чтобы сайт находили в поиске — без Вебмастера не
+                                        обойтись.</strong></p>
+                            </div>
+
+                            <div class="final-cta">
+                                <h4>Нужна помощь с настройкой Яндекс.Вебмастер?</h4>
+                                <p>Мы настроим и проверим все кабинеты для максимальной видимости вашего сайта</p>
+                                <a href="../index.html#audit" class="btn btn-primary">Получить технический аудит
+                                    сайта</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Навигация по статьям -->
+            <nav class="article-navigation">
+                <a href="yandex-metrica.html" class="nav-prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Предыдущая статья</span>
+                        <h4>Яндекс.Метрика для анализа сайта</h4>
+                    </div>
+                </a>
+                <a href="blog.html" class="nav-next">
+                    <div>
+                        <span>Все статьи</span>
+                        <h4>Вернуться к полезным материалам</h4>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </nav>
+        </div>
+    </article>
+
+    <!-- Футер -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">DG</span>
+                        <span class="logo-text">Digital Greatness</span>
+                    </a>
+                    <p>Онлайн-присутствие для малого бизнеса в Солнечногорске.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Проект</h4>
+                    <ul>
+                        <li><a href="../index.html#services">Услуги</a></li>
+                        <li><a href="../index.html#process">Как работаем</a></li>
+                        <li><a href="blog.html">Полезная информация</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="https://t.me/digital_greatness" target="_blank" rel="noopener">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </a></li>
+                        <li><a href="https://vk.com/digital_greatness" target="_blank" rel="noopener">
+                                <i class="fab fa-vk"></i> ВКонтакте
+                            </a></li>
+                        <li><a href="mailto:secretplace122.95@gmail.com">
+                                <i class="fas fa-envelope"></i> Почта
+                            </a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-cta">
+                    <h4>Начать работу</h4>
+                    <p>Готовы улучшить свое онлайн-присутствие?</p>
+                    <a href="../index.html#audit" class="btn btn-outline-light">Бесплатный аудит</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Digital Greatness. Солнечногорск.</p>
+                <p>Digital Greatness - проект, цель которого помочь самозанятым и владельцам малого бизнеса повысить
+                    своё присутствие в интернете.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="article.js"></script>
+    <script src="views-counter.js"></script>
+</body>
+
+</html>
