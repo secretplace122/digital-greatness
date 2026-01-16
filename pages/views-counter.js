@@ -5,10 +5,19 @@
         constructor() {
             this.storageKey = 'dg_exact_views';
             this.sessionsKey = 'dg_sessions';
+            this.lastSyncKey = 'dg_last_sync';
+            
+            this.API_URL = 'https://script.google.com/macros/s/AKfycbycXInyJOt4gtnuty1PmB20uTz2g07YojiDmpQBkjQH6WGsOOTvP6s6mqMPljSEiOPu/exec';
+            this.SYNC_INTERVAL = 30000;
+            this.RETRY_DELAY = 5000;
+            
             this.views = this.loadViews();
             this.currentSession = this.getSessionId();
+            this.syncInProgress = false;
             this.init();
         }
+        
+        // === Базовые методы ===
         
         getSessionId() {
             let sessionId = sessionStorage.getItem(this.sessionsKey);
@@ -49,6 +58,108 @@
             }
         }
         
+        // === Синхронизация с сервером ===
+        
+        async syncWithServer() {
+            if (this.syncInProgress) return;
+            
+            this.syncInProgress = true;
+            try {
+                const response = await this.sendToServer('sync', {
+                    data: this.views
+                });
+                
+                if (response && response.views) {
+                    Object.entries(response.views).forEach(([articleId, serverCount]) => {
+                        if (!this.views[articleId]) {
+                            this.views[articleId] = {
+                                total: serverCount,
+                                sessions: {},
+                                firstView: new Date().toISOString(),
+                                history: []
+                            };
+                        } else {
+                            this.views[articleId].total = Math.max(
+                                this.views[articleId].total || 0,
+                                serverCount
+                            );
+                        }
+                    });
+                    
+                    this.saveViews();
+                    localStorage.setItem(this.lastSyncKey, Date.now().toString());
+                    
+                    console.log('Синхронизация успешна:', response.views);
+                    return response.views;
+                }
+            } catch (error) {
+                console.warn('Ошибка синхронизации:', error);
+            } finally {
+                this.syncInProgress = false;
+            }
+            
+            return null;
+        }
+        
+        async sendToServer(action, data = {}) {
+            try {
+                const payload = {
+                    action: action,
+                    ...data
+                };
+                
+                const response = await fetch(this.API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (action === 'increment') {
+                    setTimeout(() => this.syncWithServer(), 1000);
+                }
+                
+                return null;
+                
+            } catch (error) {
+                console.warn('Ошибка отправки на сервер:', error);
+                throw error;
+            }
+        }
+        
+        async sendToServerJSONP(action, data) {
+            return new Promise((resolve) => {
+                const callbackName = 'jsonp_callback_' + Date.now();
+                window[callbackName] = (response) => {
+                    delete window[callbackName];
+                    document.body.removeChild(script);
+                    resolve(response);
+                };
+                
+                const script = document.createElement('script');
+                const params = new URLSearchParams({
+                    ...data,
+                    action: action,
+                    callback: callbackName
+                });
+                
+                script.src = `${this.API_URL}?${params.toString()}`;
+                document.body.appendChild(script);
+                
+                setTimeout(() => {
+                    if (window[callbackName]) {
+                        delete window[callbackName];
+                        document.body.removeChild(script);
+                        resolve(null);
+                    }
+                }, 5000);
+            });
+        }
+        
+        // === Основная логика счетчика ===
+        
         incrementExact(articleId = this.getArticleId()) {
             if (!articleId) return 0;
             
@@ -83,6 +194,9 @@
                 article.lastView = new Date().toISOString();
                 this.saveViews();
                 
+                this.sendToServer('increment', { article: articleId })
+                    .catch(e => console.warn('Не удалось отправить на сервер:', e));
+                
                 if (typeof ym !== 'undefined') {
                     ym(106151381, 'reachGoal', 'article_view', {
                         article: articleId,
@@ -102,26 +216,27 @@
             return this.views[articleId]?.total || 0;
         }
         
-        getArticleStats(articleId) {
-            return this.views[articleId] || null;
+        // === Периодическая синхронизация ===
+        
+        startPeriodicSync() {
+            setTimeout(() => this.syncWithServer(), 2000);
+            
+            setInterval(() => {
+                const lastSync = parseInt(localStorage.getItem(this.lastSyncKey) || '0');
+                const now = Date.now();
+                
+                if (now - lastSync > this.SYNC_INTERVAL) {
+                    this.syncWithServer();
+                }
+            }, this.SYNC_INTERVAL);
         }
         
-        getAllStats() {
-            return this.views;
-        }
-        
-        reset() {
-            this.views = {};
-            this.saveViews();
-            console.log('Счетчики сброшены');
-        }
-        
-        formatExactNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        }
+        // === Инициализация и обновление UI ===
         
         init() {
             const articleId = this.getArticleId();
+            
+            this.startPeriodicSync();
             
             if (articleId && articleId !== 'blog') {
                 const newCount = this.incrementExact();
@@ -145,6 +260,8 @@
                     console.log(`${id}: ${data.total} просмотров`);
                 });
             };
+            
+            window.forceSync = () => this.syncWithServer();
         }
         
         updateArticlePage(count) {
@@ -188,30 +305,41 @@
                         const articleId = href.replace('.html', '').split('/').pop();
                         const count = this.getExactCount(articleId);
                         
-                        if (count > 0) {
-                            const viewsElement = card.querySelector('.article-views');
-                            if (viewsElement) {
-                                const icon = viewsElement.querySelector('i') || document.createElement('i');
-                                icon.className = 'far fa-eye';
-                                
-                                const countSpan = document.createElement('span');
-                                countSpan.className = 'exact-count';
-                                countSpan.textContent = this.formatExactNumber(count);
-                                
-                                const textSpan = document.createElement('span');
-                                textSpan.className = 'views-text';
-                                textSpan.textContent = ' просмотров';
-                                
-                                viewsElement.innerHTML = '';
-                                viewsElement.appendChild(icon);
-                                viewsElement.appendChild(document.createTextNode(' '));
-                                viewsElement.appendChild(countSpan);
-                                viewsElement.appendChild(textSpan);
-                            }
+                        const viewsElement = card.querySelector('.article-views');
+                        if (viewsElement) {
+                            const icon = viewsElement.querySelector('i') || document.createElement('i');
+                            icon.className = 'far fa-eye';
+                            
+                            const countSpan = document.createElement('span');
+                            countSpan.className = 'exact-count';
+                            countSpan.textContent = this.formatExactNumber(count);
+                            
+                            const textSpan = document.createElement('span');
+                            textSpan.className = 'views-text';
+                            textSpan.textContent = ' просмотров';
+                            
+                            viewsElement.innerHTML = '';
+                            viewsElement.appendChild(icon);
+                            viewsElement.appendChild(document.createTextNode(' '));
+                            viewsElement.appendChild(countSpan);
+                            viewsElement.appendChild(textSpan);
                         }
                     }
                 }
             });
+            
+            setTimeout(() => this.updateBlogPage(), 10000);
+        }
+        
+        formatExactNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+        
+        reset() {
+            this.views = {};
+            this.saveViews();
+            localStorage.removeItem(this.lastSyncKey);
+            console.log('Счетчики сброшены');
         }
     }
     
