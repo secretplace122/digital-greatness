@@ -108,17 +108,8 @@
                     ...data
                 };
                 
-                const response = await fetch(this.API_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (action === 'increment') {
-                    setTimeout(() => this.syncWithServer(), 1000);
+                if (action === 'increment' || action === 'sync') {
+                    return await this.sendToServerJSONP(action, data);
                 }
                 
                 return null;
@@ -142,8 +133,16 @@
                 const params = new URLSearchParams({
                     ...data,
                     action: action,
-                    callback: callbackName
+                    callback: callbackName,
+                    _: Date.now()
                 });
+                
+                if (action === 'sync' && data.data) {
+                    params.append('data', JSON.stringify(data.data));
+                }
+                if (action === 'increment' && data.article) {
+                    params.append('article', data.article);
+                }
                 
                 script.src = `${this.API_URL}?${params.toString()}`;
                 document.body.appendChild(script);
@@ -152,6 +151,7 @@
                     if (window[callbackName]) {
                         delete window[callbackName];
                         document.body.removeChild(script);
+                        console.log('JSONP timeout, using fallback');
                         resolve(null);
                     }
                 }, 5000);
@@ -161,7 +161,7 @@
         // === Основная логика счетчика ===
         
         incrementExact(articleId = this.getArticleId()) {
-            if (!articleId) return 0;
+            if (!articleId || articleId === 'blog') return 0;
             
             if (!this.views[articleId]) {
                 this.views[articleId] = {
@@ -195,6 +195,11 @@
                 this.saveViews();
                 
                 this.sendToServer('increment', { article: articleId })
+                    .then(response => {
+                        if (response && response.success) {
+                            console.log('Просмотр записан на сервер:', response);
+                        }
+                    })
                     .catch(e => console.warn('Не удалось отправить на сервер:', e));
                 
                 if (typeof ym !== 'undefined') {
@@ -219,14 +224,24 @@
         // === Периодическая синхронизация ===
         
         startPeriodicSync() {
-            setTimeout(() => this.syncWithServer(), 2000);
+            setTimeout(() => {
+                this.syncWithServer().then(views => {
+                    if (views) {
+                        this.updateUI();
+                    }
+                });
+            }, 2000);
             
             setInterval(() => {
                 const lastSync = parseInt(localStorage.getItem(this.lastSyncKey) || '0');
                 const now = Date.now();
                 
                 if (now - lastSync > this.SYNC_INTERVAL) {
-                    this.syncWithServer();
+                    this.syncWithServer().then(views => {
+                        if (views) {
+                            this.updateUI();
+                        }
+                    });
                 }
             }, this.SYNC_INTERVAL);
         }
@@ -327,8 +342,17 @@
                     }
                 }
             });
+        }
+        
+        updateUI() {
+            const articleId = this.getArticleId();
             
-            setTimeout(() => this.updateBlogPage(), 10000);
+            if (articleId && articleId !== 'blog') {
+                const count = this.getExactCount(articleId);
+                this.updateArticlePage(count);
+            } else if (articleId === 'blog') {
+                this.updateBlogPage();
+            }
         }
         
         formatExactNumber(num) {
