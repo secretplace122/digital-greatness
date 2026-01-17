@@ -7,7 +7,7 @@
             this.sessionsKey = 'dg_sessions';
             this.lastSyncKey = 'dg_last_sync';
             
-            this.API_URL = 'https://script.google.com/macros/s/AKfycbycXInyJOt4gtnuty1PmB20uTz2g07YojiDmpQBkjQH6WGsOOTvP6s6mqMPljSEiOPu/exec';
+            this.API_URL = 'https://script.google.com/macros/s/AKfycbzFB-K8BCvZ9hpgain3QpJVF7-U9wJhiy0pvlJjijFn7-hIAX8b_lFUEidwjBjw-aOV2A/exec';
             this.SYNC_INTERVAL = 30000;
             this.RETRY_DELAY = 5000;
             
