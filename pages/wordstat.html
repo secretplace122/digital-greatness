@@ -335,8 +335,18 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="article.js"></script>
     <script src="views-counter.js"></script>
+    <script src="article.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Статья загружена');
+            setTimeout(function () {
+                if (window.viewsCounter) {
+                    window.viewsCounter.updateUI();
+                }
+            }, 2000);
+        });
+    </script>
 </body>
 
 </html>

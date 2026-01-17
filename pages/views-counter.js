@@ -2,7 +2,7 @@
   'use strict';
   
   const CONFIG = {
-    API_URL: 'https://script.google.com/macros/s/AKfycbzFB-K8BCvZ9hpgain3QpJVF7-U9wJhiy0pvlJjijFn7-hIAX8b_lFUEidwjBjw-aOV2A/exec',
+    API_URL: 'https://script.google.com/macros/s/AKfycbwuXSgCgx-PQ7fxFhOU6YVcubuv03N4h4dea0ZHM04eQmEYcV0luTBU_9jZRPjBDsf8rQ/exec',
     STORAGE_KEY: 'blog_views_cache',
     SESSION_KEY: 'blog_session_id'
   };
