@@ -373,15 +373,15 @@ function optimizeForMobile() {
         const nav = document.querySelector('.nav');
 
         if (menuToggle && nav) {
-            menuToggle.addEventListener('touchstart', function (e) {
-                e.preventDefault();
+            menuToggle.addEventListener('click', function () {
+                const isActive = nav.classList.contains('active');
                 nav.classList.toggle('active');
-                this.innerHTML = nav.classList.contains('active')
-                    ? '<i class="fas fa-times"></i>'
-                    : '<i class="fas fa-bars"></i>';
+                this.innerHTML = isActive
+                    ? '<i class="fas fa-bars"></i>'
+                    : '<i class="fas fa-times"></i>';
 
-                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-            }, { passive: false });
+                document.body.style.overflow = isActive ? '' : 'hidden';
+            });
         }
 
         const inputs = document.querySelectorAll('input, textarea');
