@@ -8,10 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (menuToggle) {
         menuToggle.addEventListener('click', function () {
+            const isActive = nav.classList.contains('active');
             nav.classList.toggle('active');
-            menuToggle.innerHTML = nav.classList.contains('active')
-                ? '<i class="fas fa-times"></i>'
-                : '<i class="fas fa-bars"></i>';
+            menuToggle.innerHTML = isActive
+                ? '<i class="fas fa-bars"></i>'
+                : '<i class="fas fa-times"></i>';
+            
+            document.body.style.overflow = isActive ? 'auto' : 'hidden';
         });
     }
 
@@ -22,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (menuToggle) {
                 menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
+            document.body.style.overflow = 'auto';
         });
     });
 
@@ -217,6 +221,7 @@ async function handleFormSubmit(e) {
         }, 2000);
     }
 }
+
 function showMessage(text, type = 'info') {
     const oldMsg = document.querySelector('.form-message');
     if (oldMsg) oldMsg.remove();
@@ -369,21 +374,6 @@ function optimizeForMobile() {
         `;
         document.head.appendChild(style);
 
-        const menuToggle = document.getElementById('menuToggle');
-        const nav = document.querySelector('.nav');
-
-        if (menuToggle && nav) {
-            menuToggle.addEventListener('click', function () {
-                const isActive = nav.classList.contains('active');
-                nav.classList.toggle('active');
-                this.innerHTML = isActive
-                    ? '<i class="fas fa-bars"></i>'
-                    : '<i class="fas fa-times"></i>';
-
-                document.body.style.overflow = isActive ? '' : 'hidden';
-            });
-        }
-
         const inputs = document.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('focus', function () {
@@ -412,6 +402,9 @@ function optimizeForMobile() {
             touchStartX = e.changedTouches[0].screenX;
         });
 
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.querySelector('.nav');
+        
         document.addEventListener('touchend', e => {
             const touchEndX = e.changedTouches[0].screenX;
             const swipeThreshold = 50;
@@ -490,6 +483,7 @@ function testConnection() {
             console.error('Ошибка подключения:', error);
         });
 }
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
