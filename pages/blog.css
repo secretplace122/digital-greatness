@@ -325,6 +325,7 @@
         padding: 8px 16px;
         font-size: 0.9rem;
     }
+
     .article-image {
         height: 180px;
     }
@@ -368,12 +369,113 @@
         width: 36px;
         height: 36px;
     }
+
     .article-image {
         height: 160px;
     }
+
     .article-image img {
         object-fit: cover;
         min-width: 100%;
         min-height: 100%;
+    }
+}
+
+.article-ad {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 484px;
+    background: white !important;
+    border-radius: var(--radius) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow) !important;
+    transition: var(--transition) !important;
+    border: 1px solid var(--border-color) !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+}
+
+.article-ad-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    z-index: 1 !important;
+    padding: 20px;
+    box-sizing: border-box !important;
+}
+
+.ad-badge-top {
+    position: absolute !important;
+    top: 15px !important;
+    left: 15px !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+    padding: 5px 12px !important;
+    border-radius: 12px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    z-index: 10 !important;
+}
+
+.article-ad::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .article-ad {
+        height: 350px !important;
+    }
+
+    .article-ad-image {
+        padding: 15px !important;
+    }
+
+    .ad-badge-top {
+        top: 10px !important;
+        left: 10px !important;
+        padding: 4px 10px !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-ad {
+        height: 300px !important;
+    }
+
+    .article-ad-image {
+        padding: 10px !important;
+    }
+
+    .ad-badge-top {
+        top: 8px !important;
+        left: 8px !important;
+        padding: 3px 8px !important;
+        font-size: 0.65rem !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .article-ad {
+        height: 280px !important;
+    }
+
+    .article-ad-image {
+        padding: 8px !important;
     }
 }
