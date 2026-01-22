@@ -59,11 +59,9 @@
     setTimeout(() => loadViewsFromAPI(), 1000);
   }
 
-  // ИСПРАВЛЕННАЯ ФУНКЦИЯ: Теперь определяет статью по пути папки
   function getCurrentArticleId() {
     const url = window.location.href;
     
-    // Если это главная страница блога (/blog/ или /blog/index.html)
     if (url.includes('/blog/') && 
         (url.endsWith('/blog/') || 
          url.endsWith('/blog') || 
@@ -73,16 +71,12 @@
       return null;
     }
     
-    // Если это страница статьи (находим название папки)
     if (url.includes('/blog/')) {
-      // Убираем домен и путь до /blog/
       const path = url.split('/blog/')[1];
       if (!path) return null;
       
-      // Получаем первую часть пути (название папки статьи)
       const articleSlug = path.split('/')[0];
       
-      // Очищаем от .html и других параметров
       const cleanSlug = articleSlug
         .replace(/\.html$/i, '')
         .replace(/\?.*$/, '')
@@ -95,19 +89,16 @@
       return cleanSlug;
     }
     
-    // Если это не страница блога
     return null;
   }
   
   function updateAllViewCounters(views) {
     console.log('Обновляю счетчики для:', Object.keys(views).length, 'статей');
     
-    // Обновляем счетчики на главной странице блога
     document.querySelectorAll('.article-card').forEach(card => {
       const link = card.querySelector('a[href*="/"]');
       if (link) {
         const href = link.getAttribute('href');
-        // Извлекаем slug статьи из ссылки (например, /blog/yandexwordstat/ -> yandexwordstat)
         const match = href.match(/\/blog\/([^\/]+)/);
         if (match) {
           const articleId = match[1];
@@ -121,7 +112,6 @@
       }
     });
     
-    // Обновляем счетчик на странице статьи
     const currentArticleId = getCurrentArticleId();
     if (currentArticleId && views[currentArticleId] !== undefined) {
       const count = views[currentArticleId];

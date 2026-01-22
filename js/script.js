@@ -2,21 +2,13 @@ const FORM_HANDLER_URL = 'https://script.google.com/macros/s/AKfycbxV5Uwpn-4ZIR0
 
 function initApp() {
     console.log('Digital Greatness инициализирован');
-
     initMobileMenu();
-
     initSlides();
-
     initPlanModal();
-
     initAuditForm();
-
     initSmoothScroll();
-
     updateCurrentYear();
-
     initScrollAnimations();
-
     optimizeForMobile();
 }
 
@@ -31,7 +23,6 @@ function initMobileMenu() {
             menuToggle.innerHTML = isActive
                 ? '<i class="fas fa-bars"></i>'
                 : '<i class="fas fa-times"></i>';
-
             document.body.style.overflow = isActive ? 'auto' : 'hidden';
         });
 
@@ -49,15 +40,12 @@ function initMobileMenu() {
 function initSlides() {
     const slides = document.querySelectorAll('.screen-slide');
     if (slides.length === 0) return;
-
     let currentSlide = 0;
-
     function showNextSlide() {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
     }
-
     setInterval(showNextSlide, 3000);
 }
 
@@ -99,13 +87,11 @@ function initPlanModal() {
         goToAudit.addEventListener('click', function () {
             planModal.style.display = 'none';
             document.body.style.overflow = 'auto';
-
             const auditSection = document.getElementById('audit');
             if (auditSection) {
                 auditSection.scrollIntoView({
                     behavior: 'smooth'
                 });
-
                 setTimeout(() => {
                     const businessInput = document.getElementById('business');
                     if (businessInput) {
@@ -128,19 +114,15 @@ function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-
             if (href.startsWith('http') || href === '#' || href === '#!') return;
-
             if (href.startsWith('/#')) {
                 if (window.location.pathname === '/') {
                     e.preventDefault();
                     const targetId = href.replace('/#', '');
                     const targetElement = document.getElementById(targetId);
-
                     if (targetElement) {
                         const headerHeight = document.querySelector('header.header')?.offsetHeight || 80;
                         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
                         window.scrollTo({
                             top: targetPosition,
                             behavior: 'smooth'
@@ -152,21 +134,16 @@ function initSmoothScroll() {
                     return;
                 }
             }
-
             const targetId = href.replace('#', '');
             const targetElement = document.getElementById(targetId);
-
             if (targetElement) {
                 e.preventDefault();
-
                 const headerHeight = document.querySelector('header.header')?.offsetHeight || 80;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-
                 history.pushState(null, null, href);
             }
         });
@@ -182,7 +159,6 @@ function updateCurrentYear() {
 
 function initScrollAnimations() {
     if (!('IntersectionObserver' in window)) return;
-
     const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -193,14 +169,12 @@ function initScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
 }
 
 function optimizeForMobile() {
-
     let lastTouchEnd = 0;
     document.addEventListener('touchend', function (event) {
         const now = Date.now();
@@ -222,17 +196,14 @@ function optimizeForMobile() {
                     transform: none !important;
                 }
             }
-            
             @keyframes slideIn {
                 from { transform: translateX(100%); opacity: 0; }
                 to { transform: translateX(0); opacity: 1; }
             }
-            
             @keyframes slideOut {
                 from { transform: translateX(0); opacity: 1; }
                 to { transform: translateX(100%); opacity: 0; }
             }
-            
             @keyframes popIn {
                 0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
                 70% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
@@ -253,11 +224,9 @@ function optimizeForMobile() {
                     }, 300);
                 }
             });
-
             input.setAttribute('autocomplete', 'off');
             input.setAttribute('autocorrect', 'off');
             input.setAttribute('spellcheck', 'false');
-
             if (input.type === 'tel') {
                 input.setAttribute('pattern', '[0-9]*');
                 input.setAttribute('inputmode', 'numeric');
@@ -275,7 +244,6 @@ function optimizeForMobile() {
         document.addEventListener('touchend', e => {
             const touchEndX = e.changedTouches[0].screenX;
             const swipeThreshold = 50;
-
             if (touchStartX - touchEndX > swipeThreshold && nav && nav.classList.contains('active')) {
                 nav.classList.remove('active');
                 if (menuToggle) {
@@ -298,7 +266,6 @@ function optimizeForMobile() {
                     }
                 });
             });
-
             document.querySelectorAll('img[data-src]').forEach(img => {
                 imageObserver.observe(img);
             });
@@ -306,13 +273,11 @@ function optimizeForMobile() {
 
         if ('connection' in navigator) {
             const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-
             if (connection) {
                 if (connection.saveData === true) {
                     console.log('Режим экономии трафика включен');
                     showSaveDataMessage();
                 }
-
                 connection.addEventListener('change', function () {
                     if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
                         document.querySelectorAll('.device-mockup, .hero-visual').forEach(el => {
@@ -411,13 +376,11 @@ function animateSuccess() {
     }, 1000);
 }
 
-async function handleFormSubmit(e) {
+function handleFormSubmit(e) {
     e.preventDefault();
-
     const auditForm = e.target;
     const submitButton = auditForm.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
-
     submitButton.disabled = true;
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
 
@@ -436,46 +399,87 @@ async function handleFormSubmit(e) {
         return;
     }
 
-    try {
-        console.log('Отправка данных:', formData);
+    console.log('Отправка данных:', formData);
+    sendViaJSONP(formData, submitButton, originalText, auditForm);
+}
 
-        const response = await fetch(FORM_HANDLER_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
-
-        console.log('Ответ сервера:', response);
-
-        showMessage(
-            '✅ Заявка отправлена! Мы свяжемся с вами в течение 24 часов.',
-            'success'
-        );
-
-        animateSuccess();
-
-        setTimeout(() => {
-            auditForm.reset();
+function sendViaJSONP(data, submitButton, originalText, auditForm) {
+    const callbackName = 'callback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    window[callbackName] = function(response) {
+        console.log('JSONP ответ:', response);
+        delete window[callbackName];
+        const script = document.getElementById('jsonp-script-' + callbackName);
+        if (script) {
+            script.remove();
+        }
+        if (response && response.success) {
+            showMessage(
+                '✅ Заявка отправлена! Мы свяжемся с вами в течение 24 часов.',
+                'success'
+            );
+            animateSuccess();
+            setTimeout(() => {
+                auditForm.reset();
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }, 1000);
+        } else {
+            showMessage(
+                '⚠️ Ошибка отправки: ' + (response?.error || 'Неизвестная ошибка'),
+                'error'
+            );
             submitButton.disabled = false;
             submitButton.innerHTML = originalText;
-        }, 1000);
-
-    } catch (error) {
-        console.error('Ошибка отправки:', error);
+        }
+    };
+    
+    const params = new URLSearchParams();
+    params.append('business', data.business);
+    params.append('link', data.link || '');
+    params.append('contact', data.contact);
+    params.append('source', data.source);
+    params.append('timestamp', data.timestamp);
+    params.append('callback', callbackName);
+    
+    const script = document.createElement('script');
+    script.id = 'jsonp-script-' + callbackName;
+    script.src = FORM_HANDLER_URL + '?' + params.toString();
+    script.onerror = () => {
+        console.error('Ошибка загрузки скрипта');
+        delete window[callbackName];
+        const errorScript = document.getElementById('jsonp-script-' + callbackName);
+        if (errorScript) {
+            errorScript.remove();
+        }
         showMessage(
-            '⚠️ Ошибка отправки. Пожалуйста, напишите нам напрямую в Telegram.',
+            '⚠️ Ошибка сети при отправке. Проверьте соединение или напишите нам в Telegram: @digital_greatness',
             'error'
         );
         submitButton.disabled = false;
         submitButton.innerHTML = originalText;
-    }
+    };
+    
+    document.head.appendChild(script);
+    
+    setTimeout(() => {
+        if (document.getElementById('jsonp-script-' + callbackName)) {
+            document.getElementById('jsonp-script-' + callbackName).remove();
+            if (window[callbackName]) {
+                delete window[callbackName];
+            }
+            showMessage(
+                '⚠️ Таймаут при отправке. Попробуйте еще раз или напишите нам в Telegram: @digital_greatness',
+                'error'
+            );
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+        }
+    }, 10000);
 }
 
 function testConnection() {
     console.log('Тестирование подключения к Google Apps Script...');
-
     fetch(FORM_HANDLER_URL, { method: 'GET' })
         .then(response => {
             console.log('Сервер отвечает, статус:', response.status);
