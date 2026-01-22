@@ -27,17 +27,16 @@
     <meta name="keywords"
         content="статьи продвижение бизнеса, советы по SEO, Яндекс.Карты для бизнеса, контент для сайта, локальное продвижение">
 
-    <link rel="canonical" href="https://digital-greatness.ru/blog.html">
+    <link rel="canonical" href="https://digital-greatness.ru/blog/">
 
     <meta property="og:title" content="Полезная информация для бизнеса в Солнечногорске">
     <meta property="og:description" content="Практические статьи и советы по онлайн-продвижению для малого бизнеса">
     <meta property="og:image" content="https://digital-greatness.ru/images/og-blog.jpg">
-    <meta property="og:url" content="https://digital-greatness.ru/blog.html">
+    <meta property="og:url" content="https://digital-greatness.ru/blog/">
     <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="blog.css">
-
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,26 +44,30 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#2563eb">
 </head>
 
 <body>
-    <!-- Шапка  -->
     <header id="header" class="header">
         <div class="container">
             <div class="header-inner">
-                <a href="../index.html" class="logo">
+                <a href="/" class="logo">
                     <span class="logo-icon">DG</span>
                     <span class="logo-text">Digital Greatness</span>
                 </a>
 
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li><a href="../index.html#header">Главная</a></li>
-                        <li><a href="../index.html#services">Услуги</a></li>
-                        <li><a href="../index.html#process">Как работаем</a></li>
-                        <li><a href="blog.html" class="active">Полезная информация</a></li>
-                        <li><a href="#footer">Контакты</a></li>
+                        <li><a href="/#header">Главная</a></li>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#process">Как работаем</a></li>
+                        <li><a href="/blog/">Полезная информация</a></li>
                     </ul>
                 </nav>
 
@@ -72,11 +75,12 @@
                     <i class="fas fa-bars"></i>
                 </button>
 
-                <a href="../index.html#audit" class="btn btn-primary btn-small">Бесплатный аудит</a>
+                <a href="/#audit" class="btn btn-primary btn-small">Бесплатный аудит</a>
             </div>
         </div>
     </header>
 
+    <!-- Основной контент блога -->
     <section class="blog-hero">
         <div class="container">
             <div class="blog-hero-content">
@@ -111,10 +115,10 @@
             </div>
 
             <div class="articles-grid">
-                <!-- Статья 1 -->
+                <!-- Статья 1 - Яндекс.Вордстат -->
                 <article class="article-card" data-category="seo">
                     <div class="article-image">
-                        <img src="../images/blog/wordstat.jpg" alt="wordstat для бизнеса" loading="lazy">
+                        <img src="../images/blog/wordstat.jpg" alt="Яндекс.Вордстат для бизнеса" loading="lazy">
                         <span class="article-category">SEO и продвижение</span>
                     </div>
                     <div class="article-content">
@@ -123,11 +127,12 @@
                             <span><i class="far fa-clock"></i> 3 мин чтения</span>
                         </div>
                         <h2 class="article-title">
-                            <a href="wordstat.html">Как выйти в топ поиска Яндекса в вашем городе с Яндекс.Вордстат</a>
+                            <a href="/blog/yandexwordstat/">Как выйти в топ поиска Яндекса в вашем городе с
+                                Яндекс.Вордстат</a>
                         </h2>
-                        <p class="article-excerpt">Как использовать Янедекс.Вордстат</p>
+                        <p class="article-excerpt">Как использовать Яндекс.Вордстат для принятия бизнес-решений</p>
                         <div class="article-footer">
-                            <a href="wordstat.html" class="read-more">
+                            <a href="/blog/yandexwordstat/" class="read-more">
                                 Читать статью <i class="fas fa-arrow-right"></i>
                             </a>
                             <span class="article-views">
@@ -138,16 +143,19 @@
                         </div>
                     </div>
                 </article>
-                <!-- рекламный блок -->
+
+                <!-- Рекламный блок -->
                 <a href="https://redirect.appmetrica.yandex.com/serve/750250575580367903?partner_id=831050&appmetrica_js_redirect=0&full=0&clid=14526708&banerid=1314526703"
                     target="_blank" rel="noopener nofollow sponsored" class="article-ad"
                     onclick="trackAdClick('yandex_browser')">
                     <div class="ad-badge-top">Реклама</div>
                     <img src="../images/blog/200x200.png" alt="Скачать Яндекс Браузер" class="article-ad-image">
                 </a>
+
+                <!-- Статья 2 - Google Trends -->
                 <article class="article-card" data-category="seo">
                     <div class="article-image">
-                        <img src="../images/blog/googletrends.jpg" alt="googletrends" loading="lazy">
+                        <img src="../images/blog/googletrends.jpg" alt="Google Trends" loading="lazy">
                         <span class="article-category">SEO и продвижение</span>
                     </div>
                     <div class="article-content">
@@ -156,11 +164,11 @@
                             <span><i class="far fa-clock"></i> 3 мин чтения</span>
                         </div>
                         <h2 class="article-title">
-                            <a href="googletrends.html">Что сейчас популярно и как быть на волне.</a>
+                            <a href="/blog/googletrends/">Что сейчас популярно и как быть на волне</a>
                         </h2>
-                        <p class="article-excerpt">Как использовать Google Trends</p>
+                        <p class="article-excerpt">Как использовать Google Trends для анализа трендов</p>
                         <div class="article-footer">
-                            <a href="googletrends.html" class="read-more">
+                            <a href="/blog/googletrends/" class="read-more">
                                 Читать статью <i class="fas fa-arrow-right"></i>
                             </a>
                             <span class="article-views">
@@ -171,10 +179,11 @@
                         </div>
                     </div>
                 </article>
-                <!-- Статья 3 -->
+
+                <!-- Статья 3 - Яндекс.Бизнес -->
                 <article class="article-card" data-category="seo">
                     <div class="article-image">
-                        <img src="../images/blog/ya-biz.jpg" alt="yandex.business" loading="lazy">
+                        <img src="../images/blog/ya-biz.jpg" alt="Яндекс.Бизнес" loading="lazy">
                         <span class="article-category">SEO и продвижение</span>
                     </div>
                     <div class="article-content">
@@ -183,11 +192,11 @@
                             <span><i class="far fa-clock"></i> 3 мин чтения</span>
                         </div>
                         <h2 class="article-title">
-                            <a href="yandex-business.html">Главный инструмент видимости в Рунете</a>
+                            <a href="/blog/yandexbussines/">Главный инструмент видимости в Рунете</a>
                         </h2>
-                        <p class="article-excerpt">Что такое Яндекс Бизнес и для кого?</p>
+                        <p class="article-excerpt">Что такое Яндекс.Бизнес и для кого он нужен?</p>
                         <div class="article-footer">
-                            <a href="yandex-business.html" class="read-more">
+                            <a href="/blog/yandexbussines/" class="read-more">
                                 Читать статью <i class="fas fa-arrow-right"></i>
                             </a>
                             <span class="article-views">
@@ -198,10 +207,11 @@
                         </div>
                     </div>
                 </article>
-                <!-- Статья 4 -->
+
+                <!-- Статья 4 - Яндекс.Директ -->
                 <article class="article-card" data-category="seo">
                     <div class="article-image">
-                        <img src="../images/blog/direct.jpg" alt="yandex.direct" loading="lazy">
+                        <img src="../images/blog/direct.jpg" alt="Яндекс.Директ" loading="lazy">
                         <span class="article-category">SEO и продвижение</span>
                     </div>
                     <div class="article-content">
@@ -210,11 +220,11 @@
                             <span><i class="far fa-clock"></i> 4 мин чтения</span>
                         </div>
                         <h2 class="article-title">
-                            <a href="yandex-direct.html">Привлечение трафика к вашему продукту</a>
+                            <a href="/blog/yandexdirect/">Привлечение трафика к вашему продукту</a>
                         </h2>
-                        <p class="article-excerpt">Яндекс.Директ чудо инструмент?</p>
+                        <p class="article-excerpt">Яндекс.Директ - мощный инструмент контекстной рекламы</p>
                         <div class="article-footer">
-                            <a href="yandex-direct.html" class="read-more">
+                            <a href="/blog/yandexdirect/" class="read-more">
                                 Читать статью <i class="fas fa-arrow-right"></i>
                             </a>
                             <span class="article-views">
@@ -225,10 +235,11 @@
                         </div>
                     </div>
                 </article>
-                <!-- Статья 5 -->
+
+                <!-- Статья 5 - Яндекс.Метрика -->
                 <article class="article-card" data-category="seo">
                     <div class="article-image">
-                        <img src="../images/blog/metrika.jpg" alt="yandex.metrika" loading="lazy">
+                        <img src="../images/blog/metrika.jpg" alt="Яндекс.Метрика" loading="lazy">
                         <span class="article-category">SEO и продвижение</span>
                     </div>
                     <div class="article-content">
@@ -237,11 +248,11 @@
                             <span><i class="far fa-clock"></i> 4 мин чтения</span>
                         </div>
                         <h2 class="article-title">
-                            <a href="yandex-metrica.html">Мониторинг взаимодействий клиента с вашем продуктом</a>
+                            <a href="/blog/yandexmetrica/">Мониторинг взаимодействий клиента с вашим продуктом</a>
                         </h2>
-                        <p class="article-excerpt">Яндекс.Метрика</p>
+                        <p class="article-excerpt">Яндекс.Метрика для аналитики веб-сайта</p>
                         <div class="article-footer">
-                            <a href="yandex-metrica.html" class="read-more">
+                            <a href="/blog/yandexmetrica/" class="read-more">
                                 Читать статью <i class="fas fa-arrow-right"></i>
                             </a>
                             <span class="article-views">
@@ -252,7 +263,8 @@
                         </div>
                     </div>
                 </article>
-                <!-- Статья 6  -->
+
+                <!-- Статья 6 - Яндекс.Вебмастер -->
                 <article class="article-card" data-category="seo">
                     <div class="article-image">
                         <img src="../images/blog/webmaster.jpg" alt="Яндекс.Вебмастер для управления сайтом"
@@ -265,12 +277,12 @@
                             <span><i class="far fa-clock"></i> 5 мин чтения</span>
                         </div>
                         <h2 class="article-title">
-                            <a href="yandex-webmaster.html">Яндекс.Вебмастер: панель управления видимостью сайта</a>
+                            <a href="/blog/yandexwebmaster/">Яндекс.Вебмастер: панель управления видимостью сайта</a>
                         </h2>
                         <p class="article-excerpt">Как контролировать индексацию, получать сообщения от Яндекса и
                             улучшать позиции в поиске</p>
                         <div class="article-footer">
-                            <a href="yandex-webmaster.html" class="read-more">
+                            <a href="/blog/yandexwebmaster/" class="read-more">
                                 Читать статью <i class="fas fa-arrow-right"></i>
                             </a>
                             <span class="article-views">
@@ -282,16 +294,6 @@
                     </div>
                 </article>
             </div>
-
-            <!-- Пагинация (при увеличении статей) 
-            <div class="pagination">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link next">
-                    Следующая <i class="fas fa-chevron-right"></i>
-                </a>
-            </div> -->
         </div>
     </section>
 
@@ -301,31 +303,31 @@
             <div class="cta-content">
                 <h2>Готовы применить знания на практике?</h2>
                 <p>Получите бесплатный аудит вашего онлайн-присутствия и план действий</p>
-                <a href="../index.html#audit" class="btn btn-primary btn-large">
+                <a href="../#audit" class="btn btn-primary btn-large">
                     <i class="fas fa-search"></i> Получить аудит
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Футер  -->
     <footer class="footer" id="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="../index.html" class="logo">
+                    <a href="/" class="logo">
                         <span class="logo-icon">DG</span>
                         <span class="logo-text">Digital Greatness</span>
                     </a>
-                    <p>Онлайн-присутствие для малого бизнеса в Солнечногорске.</p>
+                    <p>Онлайн-присутствие для малого бизнеса в Солнечногорске. Системный подход к привлечению клиентов.
+                    </p>
                 </div>
 
                 <div class="footer-links">
                     <h4>Проект</h4>
                     <ul>
-                        <li><a href="../index.html#services">Услуги</a></li>
-                        <li><a href="../index.html#process">Как работаем</a></li>
-                        <li><a href="blog.html">Полезная информация</a></li>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#process">Как работаем</a></li>
+                        <li><a href="/blog/">Полезная информация</a></li>
                     </ul>
                 </div>
 
@@ -347,21 +349,34 @@
                 <div class="footer-cta">
                     <h4>Начать работу</h4>
                     <p>Готовы улучшить свое онлайн-присутствие?</p>
-                    <a href="../index.html#audit" class="btn btn-outline-light">Бесплатный аудит</a>
+                    <a href="/#audit" class="btn btn-outline-light">Бесплатный аудит</a>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>&copy; <span id="currentYear"></span> Digital Greatness. Солнечногорск.</p>
-                <p>Digital Greatness - проект, цель которого помочь самозанятым и владельцам малого бизнеса повысить
-                    своё присутствие в интернете.</p>
+                <p>Digital Greatness - проект, цель которого помочь
+                    самозанятым и владельцам малого бизнеса повысить своё присутствие в интернете, тем самым
+                    повысить узнаваемость, трафик и продажи. Digital Greatness не является юридическим лицом. </p>
             </div>
         </div>
     </footer>
 
-    <script src="../script.js" defer></script>
-    <script src="views-counter.js"></script>
-    <script src="blog.js" defer></script>
+    <!-- Скрипты -->
+    <script src="../js/script.js"></script>
+    <script src="../js/views-counter.js"></script>
+    <script src="../js/blog.js"></script>
+
+    <script>
+        function trackAdClick(adName) {
+            if (typeof ym !== 'undefined') {
+                ym(106151381, 'reachGoal', 'ad_click', {
+                    ad_name: adName,
+                    page: 'blog'
+                });
+            }
+        }
+    </script>
 </body>
 
 </html>

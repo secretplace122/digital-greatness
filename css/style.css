@@ -1217,15 +1217,15 @@ section:nth-child(4) {
 }
 
 .slide-1 {
-    background-image: url('images/slide-website.jpg');
+    background-image: url('../images/slide-website.jpg');
 }
 
 .slide-2 {
-    background-image: url('images/slide-maps.jpg');
+    background-image: url('../images/slide-maps.jpg');
 }
 
 .slide-3 {
-    background-image: url('images/slide-telegram.jpg');
+    background-image: url('../images/slide-telegram.jpg');
 }
 
 .screen-slide.active {
