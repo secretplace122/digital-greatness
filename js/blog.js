@@ -1,32 +1,8 @@
 function initBlog() {
     console.log('Блог Digital Greatness загружен');
-    initMobileMenu();
     initFilters();
     initSmoothScroll();
     updateCurrentYear();
-}
-
-function initMobileMenu() {
-    const menuToggle = document.getElementById('menuToggle');
-    const nav = document.querySelector('.nav');
-    if (menuToggle && nav) {
-        menuToggle.addEventListener('click', function () {
-            const isActive = nav.classList.contains('active');
-            nav.classList.toggle('active');
-            menuToggle.innerHTML = isActive
-                ? '<i class="fas fa-bars"></i>'
-                : '<i class="fas fa-times"></i>';
-            document.body.style.overflow = isActive ? 'auto' : 'hidden';
-        });
-        const navLinks = document.querySelectorAll('.nav-list a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                document.body.style.overflow = 'auto';
-            });
-        });
-    }
 }
 
 function initFilters() {
@@ -51,44 +27,52 @@ function initFilters() {
 }
 
 function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href.startsWith('http') || href === '#' || href === '#!') return;
-            let targetId;
-            if (href.startsWith('/#')) {
-                targetId = href.substring(2);
-            } else if (href.startsWith('#')) {
-                targetId = href.substring(1);
-            } else {
-                return;
+    document.addEventListener('click', function(e) {
+        let target = e.target;
+        while (target && target.tagName !== 'A') {
+            target = target.parentElement;
+        }
+        
+        if (!target) return;
+        
+        const href = target.getAttribute('href');
+        if (!href || href.startsWith('http') || href === '#' || href === '#!') return;
+        
+        let targetId;
+        if (href.startsWith('/#')) {
+            targetId = href.substring(2);
+        } else if (href.startsWith('#')) {
+            targetId = href.substring(1);
+        } else {
+            return;
+        }
+        
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            e.preventDefault();
+            const header = document.querySelector('header.header');
+            const headerHeight = header ? header.offsetHeight : 80;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            
+            if (history.pushState) {
+                history.pushState(null, null, '#' + targetId);
             }
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                const header = document.querySelector('header.header');
-                const headerHeight = header ? header.offsetHeight : 80;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + targetId);
-                } else {
-                    window.location.hash = '#' + targetId;
+            
+            const nav = document.querySelector('.nav');
+            const menuToggle = document.getElementById('menuToggle');
+            if (nav && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                if (menuToggle) {
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                 }
-                const nav = document.querySelector('.nav');
-                const menuToggle = document.getElementById('menuToggle');
-                if (nav && nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    if (menuToggle) {
-                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                    document.body.style.overflow = 'auto';
-                }
+                document.body.style.overflow = 'auto';
             }
-        });
+        }
     });
 }
 
