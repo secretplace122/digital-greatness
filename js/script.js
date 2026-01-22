@@ -8,14 +8,12 @@ function initApp() {
     initAuditForm();
     initSmoothScroll();
     updateCurrentYear();
-    initScrollAnimations();
     optimizeForMobile();
 }
 
 function initMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
     const nav = document.querySelector('.nav');
-
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', function () {
             const isActive = nav.classList.contains('active');
@@ -25,7 +23,6 @@ function initMobileMenu() {
                 : '<i class="fas fa-times"></i>';
             document.body.style.overflow = isActive ? 'auto' : 'hidden';
         });
-
         const navLinks = document.querySelectorAll('.nav-list a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -55,9 +52,7 @@ function initPlanModal() {
     const selectedPlanName = document.getElementById('selectedPlanName');
     const modalClose = document.querySelector('.modal-close');
     const goToAudit = document.getElementById('goToAudit');
-
     if (!planModal) return;
-
     selectPlanButtons.forEach(button => {
         button.addEventListener('click', function () {
             const plan = this.getAttribute('data-plan');
@@ -68,21 +63,18 @@ function initPlanModal() {
             document.body.style.overflow = 'hidden';
         });
     });
-
     if (modalClose) {
         modalClose.addEventListener('click', function () {
             planModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
     }
-
     window.addEventListener('click', function (event) {
         if (event.target === planModal) {
             planModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
     });
-
     if (goToAudit) {
         goToAudit.addEventListener('click', function () {
             planModal.style.display = 'none';
@@ -111,40 +103,50 @@ function initAuditForm() {
 }
 
 function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
+            
             if (href.startsWith('http') || href === '#' || href === '#!') return;
+            
+            let targetId;
+            
             if (href.startsWith('/#')) {
-                if (window.location.pathname === '/') {
-                    e.preventDefault();
-                    const targetId = href.replace('/#', '');
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        const headerHeight = document.querySelector('header.header')?.offsetHeight || 80;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                        history.pushState(null, null, href);
-                    }
-                } else {
-                    window.location.href = href;
-                    return;
-                }
+                targetId = href.substring(2);
+            } else if (href.startsWith('#')) {
+                targetId = href.substring(1);
+            } else {
+                return;
             }
-            const targetId = href.replace('#', '');
             const targetElement = document.getElementById(targetId);
+            
             if (targetElement) {
                 e.preventDefault();
-                const headerHeight = document.querySelector('header.header')?.offsetHeight || 80;
+                
+                const header = document.querySelector('header.header');
+                const headerHeight = header ? header.offsetHeight : 80;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                history.pushState(null, null, href);
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                } else {
+                    window.location.hash = '#' + targetId;
+                }
+                
+                const nav = document.querySelector('.nav');
+                const menuToggle = document.getElementById('menuToggle');
+                if (nav && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    if (menuToggle) {
+                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    document.body.style.overflow = 'auto';
+                }
             }
         });
     });
@@ -157,22 +159,6 @@ function updateCurrentYear() {
     }
 }
 
-function initScrollAnimations() {
-    if (!('IntersectionObserver' in window)) return;
-    const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
-}
 
 function optimizeForMobile() {
     let lastTouchEnd = 0;
@@ -183,12 +169,9 @@ function optimizeForMobile() {
         }
         lastTouchEnd = now;
     }, false);
-
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
     if (isMobile) {
         document.documentElement.classList.add('mobile-device');
-
         const style = document.createElement('style');
         style.textContent = `
             @media (hover: none) and (pointer: coarse) {
@@ -211,7 +194,6 @@ function optimizeForMobile() {
             }
         `;
         document.head.appendChild(style);
-
         const inputs = document.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('focus', function () {
@@ -232,15 +214,12 @@ function optimizeForMobile() {
                 input.setAttribute('inputmode', 'numeric');
             }
         });
-
         let touchStartX = 0;
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.querySelector('.nav');
-
         document.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
         });
-
         document.addEventListener('touchend', e => {
             const touchEndX = e.changedTouches[0].screenX;
             const swipeThreshold = 50;
@@ -252,7 +231,6 @@ function optimizeForMobile() {
                 document.body.style.overflow = '';
             }
         });
-
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -270,7 +248,6 @@ function optimizeForMobile() {
                 imageObserver.observe(img);
             });
         }
-
         if ('connection' in navigator) {
             const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
             if (connection) {
@@ -304,16 +281,12 @@ function showSaveDataMessage() {
 function showMessage(text, type = 'info') {
     const oldMsg = document.querySelector('.form-message');
     if (oldMsg) oldMsg.remove();
-
     const message = document.createElement('div');
     message.className = `form-message form-message-${type}`;
-
     const icon = type === 'success' ? 'fa-check-circle' :
         type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
-
     const bgColor = type === 'success' ? '#10b981' :
         type === 'error' ? '#ef4444' : '#3b82f6';
-
     message.innerHTML = `
         <div style="
             position: fixed;
@@ -336,9 +309,7 @@ function showMessage(text, type = 'info') {
             <span>${text}</span>
         </div>
     `;
-
     document.body.appendChild(message);
-
     setTimeout(() => {
         message.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => message.remove(), 300);
@@ -366,9 +337,7 @@ function animateSuccess() {
             <i class="fas fa-check" style="color: white; font-size: 40px;"></i>
         </div>
     `;
-
     document.body.appendChild(checkmark);
-
     setTimeout(() => {
         checkmark.style.opacity = '0';
         checkmark.style.transition = 'opacity 0.5s ease';
@@ -376,14 +345,13 @@ function animateSuccess() {
     }, 1000);
 }
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
     e.preventDefault();
     const auditForm = e.target;
     const submitButton = auditForm.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
     submitButton.disabled = true;
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
-
     const formData = {
         business: document.getElementById('business')?.value.trim() || '',
         link: document.getElementById('link')?.value.trim() || '',
@@ -391,91 +359,42 @@ function handleFormSubmit(e) {
         source: 'digital-greatness.ru',
         timestamp: new Date().toISOString()
     };
-
     if (!formData.business || !formData.contact) {
         showMessage('Пожалуйста, заполните все обязательные поля', 'error');
         submitButton.disabled = false;
         submitButton.innerHTML = originalText;
         return;
     }
-
-    console.log('Отправка данных:', formData);
-    sendViaJSONP(formData, submitButton, originalText, auditForm);
-}
-
-function sendViaJSONP(data, submitButton, originalText, auditForm) {
-    const callbackName = 'callback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    
-    window[callbackName] = function(response) {
-        console.log('JSONP ответ:', response);
-        delete window[callbackName];
-        const script = document.getElementById('jsonp-script-' + callbackName);
-        if (script) {
-            script.remove();
-        }
-        if (response && response.success) {
-            showMessage(
-                '✅ Заявка отправлена! Мы свяжемся с вами в течение 24 часов.',
-                'success'
-            );
-            animateSuccess();
-            setTimeout(() => {
-                auditForm.reset();
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalText;
-            }, 1000);
-        } else {
-            showMessage(
-                '⚠️ Ошибка отправки: ' + (response?.error || 'Неизвестная ошибка'),
-                'error'
-            );
+    try {
+        console.log('Отправка данных:', formData);
+        const response = await fetch(FORM_HANDLER_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'no-cors',
+            body: JSON.stringify(formData)
+        });
+        console.log('Запрос отправлен (no-cors mode)');
+        showMessage(
+            '✅ Заявка отправлена! Мы свяжемся с вами в течение 24 часов.',
+            'success'
+        );
+        animateSuccess();
+        setTimeout(() => {
+            auditForm.reset();
             submitButton.disabled = false;
             submitButton.innerHTML = originalText;
-        }
-    };
-    
-    const params = new URLSearchParams();
-    params.append('business', data.business);
-    params.append('link', data.link || '');
-    params.append('contact', data.contact);
-    params.append('source', data.source);
-    params.append('timestamp', data.timestamp);
-    params.append('callback', callbackName);
-    
-    const script = document.createElement('script');
-    script.id = 'jsonp-script-' + callbackName;
-    script.src = FORM_HANDLER_URL + '?' + params.toString();
-    script.onerror = () => {
-        console.error('Ошибка загрузки скрипта');
-        delete window[callbackName];
-        const errorScript = document.getElementById('jsonp-script-' + callbackName);
-        if (errorScript) {
-            errorScript.remove();
-        }
+        }, 1000);
+    } catch (error) {
+        console.error('Ошибка отправки:', error);
         showMessage(
-            '⚠️ Ошибка сети при отправке. Проверьте соединение или напишите нам в Telegram: @digital_greatness',
+            '⚠️ Ошибка отправки. Пожалуйста, напишите нам напрямую в Telegram: @digital_greatness',
             'error'
         );
         submitButton.disabled = false;
         submitButton.innerHTML = originalText;
-    };
-    
-    document.head.appendChild(script);
-    
-    setTimeout(() => {
-        if (document.getElementById('jsonp-script-' + callbackName)) {
-            document.getElementById('jsonp-script-' + callbackName).remove();
-            if (window[callbackName]) {
-                delete window[callbackName];
-            }
-            showMessage(
-                '⚠️ Таймаут при отправке. Попробуйте еще раз или напишите нам в Telegram: @digital_greatness',
-                'error'
-            );
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalText;
-        }
-    }, 10000);
+    }
 }
 
 function testConnection() {
