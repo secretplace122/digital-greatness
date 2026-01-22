@@ -15,8 +15,6 @@
     loadViewsFromAPI();
     
     countCurrentView();
-    
-    setInterval(loadViewsFromAPI, 30000);
   }
   
   function loadViewsFromAPI() {
