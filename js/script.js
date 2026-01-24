@@ -3,17 +3,15 @@ const FORM_HANDLER_URL = 'https://script.google.com/macros/s/AKfycbxV5Uwpn-4ZIR0
 function initApp() {
     console.log('Digital Greatness инициализирован');
     
-    // Самые важные функции первыми
     updateCurrentYear();
     initMobileMenu();
     
-    // Остальные функции с задержкой
     setTimeout(() => {
         initSlides();
         initPlanModal();
         initAuditForm();
         initSmoothScroll();
-        optimizeForMobile(); // Упрощенная версия
+        optimizeForMobile();
     }, 50);
 }
 
@@ -30,7 +28,6 @@ function initMobileMenu() {
             document.body.style.overflow = isActive ? 'auto' : 'hidden';
         });
         
-        // Только для мобильных, а не для всех ссылок
         if (window.innerWidth < 768) {
             const navLinks = document.querySelectorAll('.nav-list a');
             navLinks.forEach(link => {
@@ -53,7 +50,6 @@ function initSlides() {
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
     }
-    // Запускаем только если страница видима
     if (!document.hidden) {
         setInterval(showNextSlide, 3000);
     }
@@ -68,7 +64,6 @@ function initPlanModal() {
     
     if (!planModal) return;
     
-    // Делегирование событий вместо forEach
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('select-plan')) {
             const plan = e.target.getAttribute('data-plan');
@@ -103,7 +98,6 @@ function initPlanModal() {
                 auditSection.scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Убрал setTimeout для фокуса - это не критично
             }
         });
     }
@@ -117,10 +111,8 @@ function initAuditForm() {
 }
 
 function initSmoothScroll() {
-    // Более простая версия
     document.addEventListener('click', function(e) {
         let target = e.target;
-        // Ищем ближайшую ссылку
         while (target && target.tagName !== 'A') {
             target = target.parentElement;
         }
@@ -155,7 +147,6 @@ function initSmoothScroll() {
                 history.pushState(null, null, '#' + targetId);
             }
             
-            // Закрываем меню если открыто
             const nav = document.querySelector('.nav');
             const menuToggle = document.getElementById('menuToggle');
             if (nav && nav.classList.contains('active')) {
@@ -177,7 +168,6 @@ function updateCurrentYear() {
 }
 
 function optimizeForMobile() {
-    // Только самое необходимое
     let lastTouchEnd = 0;
     document.addEventListener('touchend', function (event) {
         const now = Date.now();
@@ -273,7 +263,6 @@ async function handleFormSubmit(e) {
         return;
     }
     
-    // Отправляем асинхронно, не блокируя UI
     setTimeout(async () => {
         try {
             await fetch(FORM_HANDLER_URL, {
@@ -300,7 +289,6 @@ async function handleFormSubmit(e) {
     }, 10);
 }
 
-// Инициализируем сразу, не ждем DOMContentLoaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
         console.log('DOM загружен');
