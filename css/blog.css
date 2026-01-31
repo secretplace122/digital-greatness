@@ -116,7 +116,7 @@
 
 .article-image {
     position: relative;
-    height: 200px;
+    height: 230px;
     overflow: hidden;
     width: 100%;
     flex-shrink: 0;
@@ -327,7 +327,7 @@
     }
 
     .article-image {
-        height: 180px;
+        height: 260px;
     }
 }
 
@@ -350,7 +350,7 @@
     }
 
     .article-image {
-        height: 180px;
+        height: 200px;
     }
 
     .article-content {
@@ -371,7 +371,7 @@
     }
 
     .article-image {
-        height: 160px;
+        height: 220px;
     }
 
     .article-image img {
@@ -385,7 +385,7 @@
     display: block !important;
     position: relative !important;
     width: 100% !important;
-    height: 510px;
+    height: 540px;
     background: white !important;
     border-radius: var(--radius) !important;
     overflow: hidden !important;

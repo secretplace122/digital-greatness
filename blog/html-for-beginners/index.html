@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=106151381', 'ym');
+
+        ym(106151381, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/106151381" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+
+    <title>HTML: Фундамент Веба. Полный гид для начинающих | Digital Greatness</title>
+    <meta name="description"
+        content="Подробное руководство по HTML для начинающих: основы создания сайтов, важные теги и практические примеры для владельцев бизнеса">
+
+    <link rel="canonical" href="https://digital-greatness.ru/blog/html-for-beginners/">
+
+    <meta property="og:title" content="HTML: Фундамент Веба. Полный гид для начинающих">
+    <meta property="og:description"
+        content="Как создать свой первый сайт с нуля? Пошаговое руководство по HTML для предпринимателей">
+    <meta property="og:image" content="https://digital-greatness.ru/images/blog/blog_bg.jpg">
+    <meta property="og:url" content="https://digital-greatness.ru/blog/html-for-beginners/">
+    <meta property="og:type" content="article">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="/css/html-article.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#2563eb">
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo">
+                    <span class="logo-icon">DG</span>
+                    <span class="logo-text">Digital Greatness</span>
+                </a>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#process">Как работаем</a></li>
+                        <li><a href="/blog/">Полезные статьи</a></li>
+                        <li><a href="/works/">Готовые работы</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a href="/#audit" class="btn btn-primary btn-small">Оставить заявку</a>
+            </div>
+        </div>
+    </header>
+
+    <article class="article-single">
+        <div class="container">
+            <nav class="breadcrumbs">
+                <a href="/">Главная</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="/blog/">Полезные статьи</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>HTML для начинающих</span>
+            </nav>
+
+            <!-- Заголовок статьи -->
+            <header class="article-header">
+                <div class="article-category">Создание сайтов</div>
+                <h1 class="article-title">HTML: Фундамент Веба. Подробный гид для начинающих по созданию первой веб-страницы</h1>
+                <div class="article-meta">
+                    <div class="author">
+                        <div class="author-avatar">DG</div>
+                        <div>
+                            <span class="author-name">Digital Greatness Team</span>
+                            <time datetime="2026-01-20">20 января 2026 • 4 мин чтения</time>
+                            <div class="article-views">
+                                <i class="far fa-eye"></i>
+                                <span class="exact-count">0</span> просмотров
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-share">
+                        <span>Поделиться:</span>
+                        <a href="#" class="share-btn" data-social="telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="share-btn" data-social="vk"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="share-btn" data-social="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="article-featured-image">
+                <img src="/images/blog/blog_bg.jpg" alt="HTML для начинающих">
+            </div>
+
+            <div class="article-content">
+                <aside class="table-of-contents">
+                    <h3><i class="fas fa-list"></i> Содержание</h3>
+                    <ul>
+                        <li><a href="#section1">Что такое HTML и почему он важен?</a></li>
+                        <li><a href="#section2">Структура HTML-документа</a></li>
+                        <li><a href="#section3">Самые важные теги для контента</a></li>
+                        <li><a href="#section4">Создаем простую страницу-визитку</a></li>
+                        <li><a href="#section5">Что дальше? Следующие шаги</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Основной текст -->
+                <div class="article-body">
+                    <p class="article-intro">Представьте, что вы строите дом. Первый и самый важный этап — возведение каркаса: несущие стены, перекрытия, окна и дверные проемы. <strong>HTML (HyperText Markup Language — язык гипертекстовой разметки)</strong> — это и есть каркас любого сайта.</p>
+
+                    <section id="section1" class="article-section">
+                        <h2>Что такое HTML и почему он важен?</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <p><strong>HTML — это не язык программирования, а язык разметки.</strong> Он сообщает браузеру, <strong>что отображать</strong> на странице: где находится заголовок, абзац, изображение, кнопка или форма.</p>
+                        </div>
+
+                        <div class="webmaster-features">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Каркас сайта</h4>
+                                    <p>HTML создает структуру и контент. Без него нет веб-страницы.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>CSS для стилей</h4>
+                                    <p>Отвечает за внешний вид (краски, обои, декор).</p>
+                                </div>
+                            </div>
+
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>JavaScript для интерактивности</h4>
+                                    <p>Добавляет динамику и взаимодействие (кнопки, формы, анимация).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section2" class="article-section">
+                        <h2>Структура HTML-документа</h2>
+                        
+                        <p>Каждый HTML-документ — это обычный текстовый файл, сохраненный с расширением <code>.html</code>. Его основа — <strong>теги</strong>.</p>
+                        
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Пример базовой структуры HTML</span>
+                            </div>
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Моя первая страница&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+    &lt;p&gt;Это мой первый HTML-документ.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+
+                        <div class="article-tip">
+                            <i class="fas fa-cog"></i>
+                            <p><strong>Основные элементы структуры:</strong></p>
+                            <ul>
+                                <li><code>&lt;!DOCTYPE html&gt;</code> — говорит браузеру, что это современный HTML5</li>
+                                <li><code>&lt;html lang="ru"&gt;</code> — корневой элемент всей страницы</li>
+                                <li><code>&lt;head&gt;</code> — служебная информация (не отображается на странице)</li>
+                                <li><code>&lt;body&gt;</code> — всё, что видит пользователь</li>
+                                <li><code>&lt;meta charset="UTF-8"&gt;</code> — обязательно для кириллицы</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="section3" class="article-section">
+                        <h2>Самые важные теги для контента</h2>
+                        
+                        <div class="article-insight">
+                            <i class="fas fa-star"></i>
+                            <p><strong>Профессиональный совет:</strong> Не нужно запоминать все 100+ тегов HTML. 20 основных позволяют создать 90% типового контента.</p>
+                        </div>
+
+                        <div class="tags-grid">
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Заголовки</h3>
+                                    <code>&lt;h1&gt; - &lt;h6&gt;</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Создают иерархию контента. <code>&lt;h1&gt;</code> — главный заголовок (один на странице), <code>&lt;h2&gt;</code> — подзаголовки.</p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>&lt;h1&gt;Главная статья&lt;/h1&gt;<br>
+                                        &lt;h2&gt;Раздел 1&lt;/h2&gt;<br>
+                                        &lt;h3&gt;Подраздел&lt;/h3&gt;</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Абзацы и текст</h3>
+                                    <code>&lt;p&gt;, &lt;strong&gt;, &lt;em&gt;</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p><code>&lt;p&gt;</code> — абзац, <code>&lt;strong&gt;</code> — важный текст (жирный), <code>&lt;em&gt;</code> — акцент (курсив).</p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>&lt;p&gt;Это &lt;strong&gt;важный&lt;/strong&gt; текст с &lt;em&gt;акцентом&lt;/em&gt;.&lt;/p&gt;</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Ссылки</h3>
+                                    <code>&lt;a&gt;</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Основа "гипертекста". Атрибут <code>href</code> указывает адрес ссылки.</p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>&lt;a href="https://digital-greatness.ru" target="_blank"&gt;Digital Greatness&lt;/a&gt;</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Изображения</h3>
+                                    <code>&lt;img&gt;</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p><strong>Важно:</strong> всегда добавляйте <code>alt</code> для доступности и SEO.</p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>&lt;img src="cat.jpg" alt="Милый кот" width="500"&gt;</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Списки</h3>
+                                    <code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p><code>&lt;ul&gt;</code> — маркированный список, <code>&lt;ol&gt;</code> — нумерованный.</p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>&lt;ul&gt;<br>
+                                        &nbsp;&nbsp;&lt;li&gt;Первый пункт&lt;/li&gt;<br>
+                                        &nbsp;&nbsp;&lt;li&gt;Второй пункт&lt;/li&gt;<br>
+                                        &lt;/ul&gt;</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Контейнеры</h3>
+                                    <code>&lt;div&gt;, &lt;span&gt;</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Универсальные "коробки" для группировки. <code>&lt;div&gt;</code> — блочный, <code>&lt;span&gt;</code> — строчный.</p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>&lt;div class="header"&gt;<br>
+                                        &nbsp;&nbsp;&lt;span&gt;Логотип&lt;/span&gt;<br>
+                                        &lt;/div&gt;</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section4" class="article-section">
+                        <h2>Создаем простую страницу-визитку</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-hands-helping"></i>
+                            <p><strong>Практический пример:</strong> Давайте создадим страницу для фрилансера или специалиста. Это реальный кейс, который можно использовать прямо сейчас.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Полный код страницы-визитки</span>
+                            </div>
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Иван Петров — Фронтенд-разработчик&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;Иван Петров&lt;/h1&gt;
+        &lt;h2&gt;Начинающий фронтенд-разработчик&lt;/h2&gt;
+        &lt;img src="avatar.jpg" alt="Фотография Ивана Петрова" width="200"&gt;
+    &lt;/header&gt;
+
+    &lt;section&gt;
+        &lt;h2&gt;Обо мне&lt;/h2&gt;
+        &lt;p&gt;Привет! Я изучаю веб-разработку. Сейчас я активно осваиваю 
+        &lt;strong&gt;HTML&lt;/strong&gt; и &lt;strong&gt;CSS&lt;/strong&gt;, а в будущем 
+        планирую перейти к &lt;em&gt;JavaScript&lt;/em&gt;.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+        &lt;h2&gt;Мои навыки&lt;/h2&gt;
+        &lt;ul&gt;
+            &lt;li&gt;HTML5&lt;/li&gt;
+            &lt;li&gt;CSS3 (в процессе)&lt;/li&gt;
+            &lt;li&gt;Работа с Git&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+        &lt;h2&gt;Контакты&lt;/h2&gt;
+        &lt;p&gt;Email: &lt;a href="mailto:ivan@example.com"&gt;ivan@example.com&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;Профиль на GitHub: &lt;a href="https://github.com/ivan" 
+        target="_blank"&gt;github.com/ivan&lt;/a&gt;&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 Иван Петров. Все права защищены.&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+
+                        <div class="article-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Что важно в этом примере:</strong></p>
+                            <ul>
+                                <li>Использована <strong>семантическая разметка</strong> (<code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>)</li>
+                                <li>Добавлены все необходимые теги для реальной страницы</li>
+                                <li>Структура понятна и логична</li>
+                                <li>Учтены основы доступности (<code>alt</code> для изображения)</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="section5" class="article-section">
+                        <h2>Что дальше? Следующие шаги</h2>
+                        
+                        <div class="reasons-grid">
+                            <div class="reason">
+                                <div class="reason-number">1</div>
+                                <div class="reason-content">
+                                    <h3>Валидация кода</h3>
+                                    <p>Проверяйте HTML на ошибки с помощью <a href="https://validator.w3.org/" target="_blank">Validator W3C</a>. Это как проверка орфографии для кода.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">2</div>
+                                <div class="reason-content">
+                                    <h3>Изучите CSS</h3>
+                                    <p>Начните с основ: цвета, шрифты, отступы. Потом переходите к Flexbox и Grid для современной верстки.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">3</div>
+                                <div class="reason-content">
+                                    <h3>Пишите семантичный код</h3>
+                                    <p>Используйте теги по назначению: <code>&lt;nav&gt;</code> для навигации, <code>&lt;article&gt;</code> для статьи. Это улучшает SEO.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">4</div>
+                                <div class="reason-content">
+                                    <h3>Практика каждый день</h3>
+                                    <p>Создайте страницу-резюме, сайт-портфолио, страницу для бизнеса. Копируйте структуру успешных сайтов.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-conclusion-final">
+                            <h3><i class="fas fa-check-circle"></i> Ключевые выводы:</h3>
+                            
+                            <div class="final-checklist">
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>HTML — это каркас сайта, без него ничего не работает</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Начните с 20 основных тегов — этого достаточно для начала</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Всегда добавляйте <code>alt</code> к изображениям</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Используйте семантические теги для SEO</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Практика важнее теории — создавайте реальные проекты</span>
+                                </div>
+                            </div>
+
+                            <div class="final-statement">
+                                <p><strong>HTML — это доступный и логичный язык, который открывает дверь в мир веб-разработки. Не старайтесь запомнить все сразу — главное начать и создать свою первую страницу.</strong></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="article-cta">
+                        <h3>Нужен сайт, но нет времени изучать HTML?</h3>
+                        <p>Digital Greatness создает эффективные сайты для бизнеса в Солнечногорске. Мы делаем всю техническую часть, а вы получаете готовый инструмент для привлечения клиентов.</p>
+                        <a href="/#audit" class="btn btn-primary">
+                            <i class="fas fa-code"></i> Обсудить создание сайта
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="article-navigation">
+                <a href="/blog/css-guide/" class="nav-next">
+                    <div>
+                        <span>Следующая статья</span>
+                        <h4>CSS для начинающих</h4>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="/blog/" class="nav-prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Все статьи</span>
+                        <h4>Вернуться к полезным материалам</h4>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">DG</span>
+                        <span class="logo-text">Digital Greatness</span>
+                    </a>
+                    <p>Онлайн-присутствие для малого бизнеса в Солнечногорске. Системный подход к привлечению клиентов.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Проект</h4>
+                    <ul>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#process">Как работаем</a></li>
+                        <li><a href="/blog/">Полезные статьи</a></li>
+                        <li><a href="/works/">Готовые работы</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="https://t.me/digital_greatness" target="_blank" rel="noopener">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </a></li>
+                        <li><a href="https://vk.com/digital_greatness" target="_blank" rel="noopener">
+                                <i class="fab fa-vk"></i> ВКонтакте
+                            </a></li>
+                        <li><a href="mailto:secretplace122.95@gmail.com">
+                                <i class="fas fa-envelope"></i> Почта
+                            </a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-cta">
+                    <h4>Начать работу</h4>
+                    <p>Готовы улучшить свое онлайн-присутствие?</p>
+                    <a href="/#audit" class="btn btn-outline-light">Оставить заявку</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Digital Greatness. Солнечногорск.</p>
+                <p>Digital Greatness - проект, цель которого помочь самозанятым и владельцам малого бизнеса повысить своё присутствие в интернете, тем самым повысить узнаваемость, трафик и продажи.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/views-counter.js"></script>
+    <script src="/js/article.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Статья "HTML для начинающих" загружена');
+            setTimeout(function () {
+                if (window.viewsCounter) {
+                    window.viewsCounter.updateUI();
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

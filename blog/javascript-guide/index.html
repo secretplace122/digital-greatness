@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=106151381', 'ym');
+
+        ym(106151381, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/106151381" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+
+    <title>JavaScript: Оживляем ваш сайт. Полное руководство для начинающих | Digital Greatness</title>
+    <meta name="description"
+        content="Подробное руководство по JavaScript для начинающих: основы программирования, работа с DOM, анимации и создание интерактивных элементов на сайте.">
+
+    <link rel="canonical" href="https://digital-greatness.ru/blog/javascript-guide/">
+
+    <meta property="og:title" content="JavaScript: Оживляем ваш сайт. Полное руководство для начинающих">
+    <meta property="og:description"
+        content="Как превратить статичный сайт в интерактивное приложение: пошаговое руководство по JavaScript для владельцев бизнеса и начинающих разработчиков">
+    <meta property="og:image" content="https://digital-greatness.ru/images/blog/javascript.jpg">
+    <meta property="og:url" content="https://digital-greatness.ru/blog/javascript-guide/">
+    <meta property="og:type" content="article">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="/css/js-article.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#2563eb">
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo">
+                    <span class="logo-icon">DG</span>
+                    <span class="logo-text">Digital Greatness</span>
+                </a>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#process">Как работаем</a></li>
+                        <li><a href="/blog/">Полезные статьи</a></li>
+                        <li><a href="/works/">Готовые работы</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a href="/#audit" class="btn btn-primary btn-small">Оставить заявку</a>
+            </div>
+        </div>
+    </header>
+
+    <article class="article-single">
+        <div class="container">
+            <nav class="breadcrumbs">
+                <a href="/">Главная</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="/blog/">Полезные статьи</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>JavaScript руководство</span>
+            </nav>
+
+            <!-- Заголовок статьи -->
+            <header class="article-header">
+                <div class="article-category">Создание сайтов</div>
+                <h1 class="article-title">JavaScript: Оживляем ваш сайт. Как превратить статичную страницу в интерактивное приложение</h1>
+                <div class="article-meta">
+                    <div class="author">
+                        <div class="author-avatar">DG</div>
+                        <div>
+                            <span class="author-name">Digital Greatness Team</span>
+                            <time datetime="2026-01-30">30 января 2026 • 5 мин чтения</time>
+                            <div class="article-views">
+                                <i class="far fa-eye"></i>
+                                <span class="exact-count">0</span> просмотров
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-share">
+                        <span>Поделиться:</span>
+                        <a href="#" class="share-btn" data-social="telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="share-btn" data-social="vk"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="share-btn" data-social="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="article-featured-image">
+                <img src="/images/blog/blog_bg.jpg" alt="JavaScript программирование для сайтов">
+            </div>
+
+            <div class="article-content">
+                <aside class="table-of-contents">
+                    <h3><i class="fas fa-list"></i> Содержание</h3>
+                    <ul>
+                        <li><a href="#section1">Что такое JavaScript и зачем он нужен?</a></li>
+                        <li><a href="#section2">Основы синтаксиса: переменные и типы данных</a></li>
+                        <li><a href="#section3">Функции: многократное использование кода</a></li>
+                        <li><a href="#section4">Работа с DOM: как взаимодействовать со страницей</a></li>
+                        <li><a href="#section5">События: реагируем на действия пользователя</a></li>
+                        <li><a href="#section6">Практика: создаем интерактивную галерею</a></li>
+                        <li><a href="#section7">Что дальше? Современный JavaScript</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Основной текст -->
+                <div class="article-body">
+                    <p class="article-intro">Представьте, что у вас есть красивый, стильный дом (HTML + CSS), но в нём ничего не работает: выключатели не включают свет, двери не открываются, вода не течёт. <strong>JavaScript</strong> — это электричество, сантехника и умные системы, которые делают дом жилым и удобным.</p>
+
+                    <section id="section1" class="article-section">
+                        <h2>Что такое JavaScript и зачем он нужен?</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <p><strong>JavaScript — это язык программирования для веб-разработки.</strong> В отличие от HTML (структура) и CSS (внешний вид), JavaScript добавляет интерактивность, логику и динамическое поведение.</p>
+                        </div>
+
+                        <div class="webmaster-features">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Интерактивность</h4>
+                                    <p>Кнопки, формы, слайдеры, модальные окна — всё это работает на JavaScript</p>
+                                </div>
+                            </div>
+
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Динамика</h4>
+                                    <p>Контент может меняться без перезагрузки страницы</p>
+                                </div>
+                            </div>
+
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Работа с данными</h4>
+                                    <p>Отправка форм, валидация, работа с API, localStorage</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-insight">
+                            <i class="fas fa-star"></i>
+                            <p><strong>Важно:</strong> JavaScript работает в браузере пользователя (клиентская часть), но также может работать и на сервере (Node.js).</p>
+                        </div>
+                    </section>
+
+                    <section id="section2" class="article-section">
+                        <h2>Основы синтаксиса: переменные и типы данных</h2>
+                        
+                        <p>JavaScript имеет простой и понятный синтаксис. Давайте начнём с основ:</p>
+                        
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Базовый синтаксис JavaScript</span>
+                            </div>
+                            <pre><code>// Переменные (современный способ)
+let name = "Алексей";
+const age = 30;
+var oldWay = "устаревший способ"; // не используйте var
+
+// Типы данных
+let string = "Текст в кавычках";
+let number = 42;
+let boolean = true; // или false
+let array = [1, 2, 3, "текст", true];
+let object = {
+    name: "Иван",
+    age: 25,
+    isAdmin: true
+};
+
+// Вывод в консоль (для отладки)
+console.log("Привет, " + name);
+console.log(`Мне ${age} лет`); // шаблонные строки</code></pre>
+                        </div>
+
+                        <div class="article-tip">
+                            <i class="fas fa-check-circle"></i>
+                            <p><strong>Современный подход:</strong> Всегда используйте <code>const</code> для значений, которые не меняются, и <code>let</code> для переменных, которые будут изменяться. Избегайте устаревшего <code>var</code>.</p>
+                        </div>
+                    </section>
+
+                    <section id="section3" class="article-section">
+                        <h2>Функции: многократное использование кода</h2>
+                        
+                        <div class="article-insight">
+                            <i class="fas fa-cogs"></i>
+                            <p><strong>Функции</strong> — это фундаментальный строительный блок JavaScript. Они позволяют писать код один раз и использовать его много раз.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Разные способы объявления функций</span>
+                            </div>
+                            <pre><code>// 1. Обычная функция (Function Declaration)
+function greet(name) {
+    return `Привет, ${name}!`;
+}
+
+// 2. Функциональное выражение (Function Expression)
+const greet = function(name) {
+    return `Привет, ${name}!`;
+};
+
+// 3. Стрелочная функция (современный способ)
+const greet = (name) => {
+    return `Привет, ${name}!`;
+};
+
+// 4. Сокращенная стрелочная функция
+const greet = name => `Привет, ${name}!`;
+
+// Использование функции
+console.log(greet("Мария")); // Привет, Мария!
+
+// Функция с несколькими параметрами
+const calculateTotal = (price, quantity) => {
+    return price * quantity;
+};</code></pre>
+                        </div>
+
+                        <div class="tags-grid">
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Обычные функции</h3>
+                                    <code>function name()</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Поднимаются вверх (можно вызывать до объявления). Хороши для основных, именованных функций.</p>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Стрелочные функции</h3>
+                                    <code>() => {}</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Современный синтаксис. Нет своего <code>this</code>. Идеальны для колбэков и коротких функций.</p>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Параметры</h3>
+                                    <code>(param1, param2)</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Данные, которые передаются в функцию. Могут иметь значения по умолчанию: <code>(name = "Гость")</code>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section4" class="article-section">
+                        <h2>Работа с DOM: как взаимодействовать со страницей</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-sitemap"></i>
+                            <p><strong>DOM (Document Object Model)</strong> — это программное представление HTML-страницы. JavaScript может изменять DOM, чтобы динамически обновлять контент.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Основные методы работы с DOM</span>
+                            </div>
+                            <pre><code>// 1. Поиск элементов
+const button = document.getElementById('myButton');
+const items = document.querySelectorAll('.item');
+const header = document.querySelector('header');
+
+// 2. Изменение контента
+button.textContent = 'Нажми меня';
+header.innerHTML = '<h1>Новый заголовок</h1>';
+
+// 3. Изменение стилей
+button.style.backgroundColor = 'blue';
+button.style.color = 'white';
+button.style.padding = '10px 20px';
+
+// 4. Добавление/удаление классов
+button.classList.add('active');
+button.classList.remove('disabled');
+button.classList.toggle('hidden'); // переключает класс
+
+// 5. Создание новых элементов
+const newDiv = document.createElement('div');
+newDiv.textContent = 'Я новый элемент!';
+document.body.appendChild(newDiv);
+
+// 6. Удаление элементов
+const elementToRemove = document.getElementById('oldElement');
+elementToRemove.remove();</code></pre>
+                        </div>
+
+                        <div class="article-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Безопасность:</strong> Будьте осторожны с <code>innerHTML</code> — он может быть уязвим для XSS-атак. Для простого текста используйте <code>textContent</code>.</p>
+                        </div>
+                    </section>
+
+                    <section id="section5" class="article-section">
+                        <h2>События: реагируем на действия пользователя</h2>
+                        
+                        <div class="article-insight">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <p><strong>События</strong> — это основа интерактивности. Клики, наведение мыши, ввод текста, отправка форм — всё это события, на которые JavaScript может реагировать.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Работа с событиями в JavaScript</span>
+                            </div>
+                            <pre><code>// 1. Находим элемент
+const button = document.getElementById('myButton');
+const input = document.getElementById('myInput');
+const form = document.getElementById('myForm');
+
+// 2. Добавляем обработчик события клика
+button.addEventListener('click', function() {
+    alert('Кнопка нажата!');
+});
+
+// 3. Событие ввода текста
+input.addEventListener('input', function(event) {
+    console.log('Пользователь вводит:', event.target.value);
+});
+
+// 4. Событие отправки формы
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); // предотвращаем перезагрузку страницы
+    console.log('Форма отправлена!');
+    // здесь будет код для отправки данных на сервер
+});
+
+// 5. Событие наведения мыши
+button.addEventListener('mouseenter', function() {
+    button.style.backgroundColor = 'darkblue';
+});
+
+button.addEventListener('mouseleave', function() {
+    button.style.backgroundColor = 'blue';
+});
+
+// 6. Современная стрелочная функция
+button.addEventListener('click', () => {
+    console.log('Стрелочная функция работает!');
+});</code></pre>
+                        </div>
+
+                        <div class="reasons-grid">
+                            <div class="reason">
+                                <div class="reason-number">1</div>
+                                <div class="reason-content">
+                                    <h3>addEventListener</h3>
+                                    <p>Современный способ добавления обработчиков. Можно добавить несколько обработчиков на одно событие.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">2</div>
+                                <div class="reason-content">
+                                    <h3>event.preventDefault()</h3>
+                                    <p>Отменяет стандартное поведение браузера (например, отправку формы или переход по ссылке).</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">3</div>
+                                <div class="reason-content">
+                                    <h3>event.target</h3>
+                                    <p>Ссылка на элемент, который вызвал событие. Полезно для обработки событий на нескольких элементах.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">4</div>
+                                <div class="reason-content">
+                                    <h3>Делегирование событий</h3>
+                                    <p>Добавление обработчика на родителя для обработки событий на динамически созданных дочерних элементах.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section6" class="article-section">
+                        <h2>Практика: создаем интерактивную галерею</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-laptop-code"></i>
+                            <p>Давайте создадим простую интерактивную галерею изображений, используя изученные техники:</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>HTML структура галереи</span>
+                            </div>
+                            <pre><code>&lt;div class="gallery"&gt;
+    &lt;div class="gallery-main"&gt;
+        &lt;img id="mainImage" src="image1.jpg" alt="Основное изображение"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="gallery-thumbnails"&gt;
+        &lt;img class="thumbnail active" src="image1.jpg" data-full="image1.jpg" alt="Изображение 1"&gt;
+        &lt;img class="thumbnail" src="image2-thumb.jpg" data-full="image2.jpg" alt="Изображение 2"&gt;
+        &lt;img class="thumbnail" src="image3-thumb.jpg" data-full="image3.jpg" alt="Изображение 3"&gt;
+        &lt;img class="thumbnail" src="image4-thumb.jpg" data-full="image4.jpg" alt="Изображение 4"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="gallery-controls"&gt;
+        &lt;button id="prevBtn"&gt;◀ Назад&lt;/button&gt;
+        &lt;button id="nextBtn"&gt;Вперёд ▶&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>JavaScript код галереи</span>
+                            </div>
+                            <pre><code>// Находим все необходимые элементы
+const mainImage = document.getElementById('mainImage');
+const thumbnails = document.querySelectorAll('.thumbnail');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let currentIndex = 0;
+
+// Функция для обновления основного изображения
+function updateMainImage(index) {
+    const thumbnail = thumbnails[index];
+    const fullImage = thumbnail.getAttribute('data-full');
+    
+    // Обновляем основное изображение
+    mainImage.src = fullImage;
+    mainImage.alt = thumbnail.alt;
+    
+    // Обновляем активный класс у миниатюр
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    thumbnail.classList.add('active');
+    
+    // Обновляем текущий индекс
+    currentIndex = index;
+}
+
+// Обработчики для миниатюр
+thumbnails.forEach((thumbnail, index) => {
+    thumbnail.addEventListener('click', () => {
+        updateMainImage(index);
+    });
+});
+
+// Кнопка "Назад"
+prevBtn.addEventListener('click', () => {
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) {
+        newIndex = thumbnails.length - 1; // переходим к последнему
+    }
+    updateMainImage(newIndex);
+});
+
+// Кнопка "Вперёд"
+nextBtn.addEventListener('click', () => {
+    let newIndex = currentIndex + 1;
+    if (newIndex >= thumbnails.length) {
+        newIndex = 0; // переходим к первому
+    }
+    updateMainImage(newIndex);
+});
+
+// Автопрокрутка каждые 5 секунд
+setInterval(() => {
+    let newIndex = currentIndex + 1;
+    if (newIndex >= thumbnails.length) {
+        newIndex = 0;
+    }
+    updateMainImage(newIndex);
+}, 5000);</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="section7" class="article-section">
+                        <h2>Что дальше? Современный JavaScript</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-rocket"></i>
+                            <p>Освоив основы JavaScript, вы можете перейти к более продвинутым концепциям и современным инструментам:</p>
+                        </div>
+
+                        <div class="reasons-grid">
+                            <div class="reason">
+                                <div class="reason-number">1</div>
+                                <div class="reason-content">
+                                    <h3>ES6+ (современный синтаксис)</h3>
+                                    <p>Стрелочные функции, шаблонные строки, деструктуризация, spread/rest операторы, классы.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">2</div>
+                                <div class="reason-content">
+                                    <h3>Асинхронность</h3>
+                                    <p>Promise, async/await для работы с API, таймерами и операциями, требующими времени.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">3</div>
+                                <div class="reason-content">
+                                    <h3>Фреймворки и библиотеки</h3>
+                                    <p>React, Vue, Angular для создания сложных одностраничных приложений (SPA).</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">4</div>
+                                <div class="reason-content">
+                                    <h3>Инструменты разработки</h3>
+                                    <p>Webpack, npm, ESLint, TypeScript для профессиональной разработки.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-conclusion-final">
+                            <h3><i class="fas fa-check-circle"></i> Ключевые выводы:</h3>
+                            
+                            <div class="final-checklist">
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>JavaScript добавляет интерактивность и логику к HTML/CSS</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Используйте <code>const</code> и <code>let</code> вместо <code>var</code></span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Стрелочные функции — современный стандарт</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>DOM позволяет динамически изменять страницу</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>События — основа взаимодействия с пользователем</span>
+                                </div>
+                                <div class="check-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Практикуйтесь на реальных проектах</span>
+                                </div>
+                            </div>
+
+                            <div class="final-statement">
+                                <p><strong>JavaScript — это мост между статичным контентом и полноценным веб-приложением. Он превращает посетителя в активного пользователя. Начните с простых скриптов, постепенно усложняйте задачи, и вскоре вы сможете создавать интерактивные интерфейсы, которые удивят и ваших пользователей, и вас самих.</strong></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="article-cta">
+                        <h3>Нужен интерактивный сайт с современными функциями?</h3>
+                        <p>Digital Greatness создаёт сайты с продуманной JavaScript-логикой: формы обратной связи, интерактивные калькуляторы, динамические фильтры и многое другое.</p>
+                        <a href="/#audit" class="btn btn-primary">
+                            <i class="fas fa-code"></i> Обсудить интерактивные возможности
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="article-navigation">
+                <a href="#" class="nav-next">
+                    <div>
+                        <span>Следующая статья</span>
+                        <h4>Пусто</h4>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="/blog/" class="nav-prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Все статьи</span>
+                        <h4>Вернуться к полезным материалам</h4>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">DG</span>
+                        <span class="logo-text">Digital Greatness</span>
+                    </a>
+                    <p>Онлайн-присутствие для малого бизнеса в Солнечногорске. Системный подход к привлечению клиентов.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Проект</h4>
+                    <ul>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#process">Как работаем</a></li>
+                        <li><a href="/blog/">Полезные статьи</a></li>
+                        <li><a href="/works/">Готовые работы</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="https://t.me/digital_greatness" target="_blank" rel="noopener">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </a></li>
+                        <li><a href="https://vk.com/digital_greatness" target="_blank" rel="noopener">
+                                <i class="fab fa-vk"></i> ВКонтакте
+                            </a></li>
+                        <li><a href="mailto:secretplace122.95@gmail.com">
+                                <i class="fas fa-envelope"></i> Почта
+                            </a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-cta">
+                    <h4>Начать работу</h4>
+                    <p>Готовы улучшить свое онлайн-присутствие?</p>
+                    <a href="/#audit" class="btn btn-outline-light">Оставить заявку</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Digital Greatness. Солнечногорск.</p>
+                <p>Digital Greatness - проект, цель которого помочь самозанятым и владельцам малого бизнеса повысить своё присутствие в интернете, тем самым повысить узнаваемость, трафик и продажи.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/views-counter.js"></script>
+    <script src="/js/article.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Статья "JavaScript руководство" загружена');
+            setTimeout(function () {
+                if (window.viewsCounter) {
+                    window.viewsCounter.updateUI();
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

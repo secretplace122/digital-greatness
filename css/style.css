@@ -216,6 +216,14 @@ h3 {
     width: 100%;
 }
 
+.nav-list a.active {
+    color: var(--primary-color);
+}
+
+.nav-list a.active::after {
+    width: 100%;
+}
+
 .menu-toggle {
     display: none;
     background: none;

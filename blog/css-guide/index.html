@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=106151381', 'ym');
+
+        ym(106151381, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/106151381" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+
+    <title>CSS: Как оживить ваш сайт. Практическое руководство | Digital Greatness</title>
+    <meta name="description"
+        content="Полное руководство по CSS для начинающих: цвета, шрифты, верстка, Flexbox, Grid и адаптивный дизайн. Как превратить черно-белый каркас в красивый сайт.">
+
+    <link rel="canonical" href="https://digital-greatness.ru/blog/css-guide/">
+
+    <meta property="og:title" content="CSS: Как оживить ваш сайт. Практическое руководство">
+    <meta property="og:description"
+        content="От черно-белого каркаса до современного дизайна: пошаговое руководство по CSS для владельцев бизнеса и начинающих разработчиков">
+    <meta property="og:image" content="https://digital-greatness.ru/images/blog/css-design.jpg">
+    <meta property="og:url" content="https://digital-greatness.ru/blog/css-guide/">
+    <meta property="og:type" content="article">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="/css/css-article.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#2563eb">
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo">
+                    <span class="logo-icon">DG</span>
+                    <span class="logo-text">Digital Greatness</span>
+                </a>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#process">Как работаем</a></li>
+                        <li><a href="/blog/">Полезные статьи</a></li>
+                        <li><a href="/works/">Готовые работы</a></li>
+                    </ul>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a href="/#audit" class="btn btn-primary btn-small">Оставить заявку</a>
+            </div>
+        </div>
+    </header>
+
+    <article class="article-single">
+        <div class="container">
+            <nav class="breadcrumbs">
+                <a href="/">Главная</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="/blog/">Полезные статьи</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>CSS руководство</span>
+            </nav>
+
+            <!-- Заголовок статьи -->
+            <header class="article-header">
+                <div class="article-category">Создание сайтов</div>
+                <h1 class="article-title">CSS: Как оживить ваш сайт. От черно-белого каркаса до современного дизайна</h1>
+                <div class="article-meta">
+                    <div class="author">
+                        <div class="author-avatar">DG</div>
+                        <div>
+                            <span class="author-name">Digital Greatness Team</span>
+                            <time datetime="2026-01-25">25 января 2026 • 3 мин чтения</time>
+                            <div class="article-views">
+                                <i class="far fa-eye"></i>
+                                <span class="exact-count">0</span> просмотров
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-share">
+                        <span>Поделиться:</span>
+                        <a href="#" class="share-btn" data-social="telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="share-btn" data-social="vk"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="share-btn" data-social="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="article-featured-image">
+                <img src="/images/blog/blog_bg.jpg" alt="CSS дизайн для сайтов">
+            </div>
+
+            <div class="article-content">
+                <aside class="table-of-contents">
+                    <h3><i class="fas fa-list"></i> Содержание</h3>
+                    <ul>
+                        <li><a href="#section1">Что такое CSS и зачем он нужен?</a></li>
+                        <li><a href="#section2">Как подключить CSS к сайту</a></li>
+                        <li><a href="#section3">Основы синтаксиса: селекторы и свойства</a></li>
+                        <li><a href="#section4">Блок, отступы, границы: модель Box Model</a></li>
+                        <li><a href="#section5">Современная верстка: Flexbox и Grid</a></li>
+                        <li><a href="#section6">Адаптивный дизайн: Mobile First подход</a></li>
+                        <li><a href="#section7">Практика: создаем красивую карточку</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Основной текст -->
+                <div class="article-body">
+                    <p class="article-intro">Представьте, что у вас есть готовый каркас дома из HTML — стены, окна, двери. Но он серый, безликий. <strong>CSS (Cascading Style Sheets — каскадные таблицы стилей)</strong> — это краска, обои, декор и освещение. Он превращает скелет сайта в живой, красивый и удобный интерфейс.</p>
+
+                    <section id="section1" class="article-section">
+                        <h2>Что такое CSS и зачем он нужен?</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <p><strong>CSS — это язык стилей, который делает HTML-страницы красивыми.</strong> Он отвечает за внешний вид: цвета, шрифты, отступы, расположение элементов и многое другое.</p>
+                        </div>
+
+                        <div class="webmaster-features">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>HTML — структура</h4>
+                                    <p>Каркас сайта, его скелет. Что будет на странице.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>CSS — внешний вид</h4>
+                                    <p>Дизайн сайта, его внешность. Как это будет выглядеть.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>JavaScript — поведение</h4>
+                                    <p>Интерактивность сайта. Как будет реагировать на действия.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section2" class="article-section">
+                        <h2>Как подключить CSS к сайту: 3 способа</h2>
+                        
+                        <p>Есть три основных способа добавить CSS на страницу:</p>
+                        
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Пример подключения CSS</span>
+                            </div>
+                            <pre><code>&lt;!-- Внешний файл (рекомендуется) --&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;!-- Внутри HTML --&gt;
+&lt;style&gt;
+    h1 { color: blue; }
+&lt;/style&gt;
+
+&lt;!-- Инлайн-стили (не рекомендуется) --&gt;
+&lt;h1 style="color: red;"&gt;Заголовок&lt;/h1&gt;</code></pre>
+                        </div>
+
+                        <div class="article-tip">
+                            <i class="fas fa-check-circle"></i>
+                            <p><strong>Правильный подход:</strong> Всегда используйте внешние файлы CSS (<code>.css</code>). Это позволяет:</p>
+                            <ul>
+                                <li>Использовать один файл для всех страниц сайта</li>
+                                <li>Легко вносить изменения</li>
+                                <li>Ускорить загрузку (браузер кэширует CSS файлы)</li>
+                                <li>Поддерживать порядок в коде</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="section3" class="article-section">
+                        <h2>Основы синтаксиса: селекторы и свойства</h2>
+                        
+                        <div class="article-insight">
+                            <i class="fas fa-star"></i>
+                            <p><strong>Синтаксис CSS очень прост:</strong> Выбираете элемент (селектор) и говорите, как он должен выглядеть (свойства).</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Структура CSS правила</span>
+                            </div>
+                            <pre><code>селектор {
+    свойство: значение;
+    свойство: значение;
+    свойство: значение;
+}</code></pre>
+                        </div>
+
+                        <div class="tags-grid">
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Селекторы по тегу</h3>
+                                    <code>h1, p, a</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Применяются ко всем элементам этого типа</p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>h1 {<br>
+                                        &nbsp;&nbsp;color: #2563eb;<br>
+                                        &nbsp;&nbsp;font-size: 2rem;<br>
+                                        }</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Селекторы по классу</h3>
+                                    <code>.button, .header</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Наиболее частый способ. Элементы с классом <code>class="button"</code></p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>.button {<br>
+                                        &nbsp;&nbsp;background: blue;<br>
+                                        &nbsp;&nbsp;color: white;<br>
+                                        &nbsp;&nbsp;padding: 10px 20px;<br>
+                                        }</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tag-card">
+                                <div class="tag-header">
+                                    <h3>Селекторы по ID</h3>
+                                    <code>#header, #footer</code>
+                                </div>
+                                <div class="tag-content">
+                                    <p>Для уникальных элементов с <code>id="header"</code></p>
+                                    <div class="tag-example">
+                                        <h4>Пример:</h4>
+                                        <code>#header {<br>
+                                        &nbsp;&nbsp;height: 80px;<br>
+                                        &nbsp;&nbsp;background: #f8fafc;<br>
+                                        }</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section4" class="article-section">
+                        <h2>Блок, отступы, границы: модель Box Model</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-cube"></i>
+                            <p><strong>Каждый элемент в CSS — это прямоугольный блок.</strong> Box Model описывает, как этот блок устроен изнутри наружу.</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Пример Box Model</span>
+                            </div>
+                            <pre><code>.card {
+    /* Контент */
+    width: 300px;
+    height: 200px;
+    
+    /* Внутренние отступы */
+    padding: 20px;
+    
+    /* Граница */
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    
+    /* Внешние отступы */
+    margin: 15px;
+    
+    /* Фон */
+    background: white;
+    
+    /* Тень */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}</code></pre>
+                        </div>
+
+                        <div class="article-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Важно понимать:</strong> Когда вы задаете <code>width: 300px</code>, это ширина только контента. Общая ширина элемента будет: <code>300px + padding + border</code>. Используйте <code>box-sizing: border-box;</code> чтобы <code>width</code> включала <code>padding</code> и <code>border</code>.</p>
+                        </div>
+                    </section>
+
+                    <section id="section5" class="article-section">
+                        <h2>Современная верстка: Flexbox и Grid</h2>
+                        
+                        <div class="article-insight">
+                            <i class="fas fa-th-large"></i>
+                            <p><strong>Flexbox и Grid — две революционные технологии CSS</strong>, которые упростили создание сложных макетов.</p>
+                        </div>
+
+                        <div class="reasons-grid">
+                            <div class="reason">
+                                <div class="reason-number">1</div>
+                                <div class="reason-content">
+                                    <h3>Flexbox</h3>
+                                    <p>Одномерное выравнивание элементов в строку или колонку. Идеально для навигации, карточек, распределения пространства.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">2</div>
+                                <div class="reason-content">
+                                    <h3>CSS Grid</h3>
+                                    <p>Двумерные сетки для сложных макетов. Позволяет точно контролировать строки и колонки одновременно.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">3</div>
+                                <div class="reason-content">
+                                    <h3>Когда что использовать</h3>
+                                    <p>Flexbox — для компонентов внутри контейнера. Grid — для общего макета страницы.</p>
+                                </div>
+                            </div>
+
+                            <div class="reason">
+                                <div class="reason-number">4</div>
+                                <div class="reason-content">
+                                    <h3>Совмещение</h3>
+                                    <p>Часто используют вместе: Grid для основного макета, Flexbox для внутренних компонентов.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Пример Flexbox</span>
+                            </div>
+                            <pre><code>.nav {
+    display: flex; /* Включаем Flexbox */
+    justify-content: space-between; /* Распределяем по ширине */
+    align-items: center; /* Выравниваем по центру вертикально */
+    gap: 20px; /* Расстояние между элементами */
+}</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Пример CSS Grid</span>
+                            </div>
+                            <pre><code>.products-grid {
+    display: grid; /* Включаем Grid */
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки равной ширины */
+    gap: 30px; /* Расстояние между карточками */
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="section6" class="article-section">
+                        <h2>Адаптивный дизайн: Mobile First подход</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-mobile-alt"></i>
+                            <p><strong>Mobile First</strong> — сначала создаем дизайн для мобильных, потом адаптируем для больших экранов. Более 60% трафика идет с мобильных устройств!</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Медиа-запросы для адаптивности</span>
+                            </div>
+                            <pre><code>/* Базовые стили для мобильных (Mobile First) */
+.container {
+    padding: 15px;
+    font-size: 16px;
+}
+
+/* Планшеты (768px и выше) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+}
+
+/* Десктопы (1024px и выше) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        padding: 30px;
+    }
+    
+    .nav {
+        display: flex;
+    }
+}</code></pre>
+                        </div>
+
+                        <div class="article-warning">
+                            <i class="fas fa-ruler"></i>
+                            <p><strong>Профессиональный совет:</strong> Используйте относительные единицы (<code>%</code>, <code>rem</code>, <code>vw</code>) вместо пикселей. <code>1rem = 16px</code> (обычно), но пользователь может изменить размер шрифта в браузере.</p>
+                        </div>
+                    </section>
+
+                    <section id="section7" class="article-section">
+                        <h2>Практика: создаем красивую карточку товара</h2>
+                        
+                        <div class="article-tip">
+                            <i class="fas fa-laptop-code"></i>
+                            <p>Давайте создадим современную карточку товара, которая использует все изученные техники:</p>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>HTML структура карточки</span>
+                            </div>
+                            <pre><code>&lt;div class="product-card"&gt;
+    &lt;div class="product-badge"&gt;Новинка&lt;/div&gt;
+    &lt;div class="product-image"&gt;
+        &lt;img src="product.jpg" alt="Смартфон Premium X"&gt;
+    &lt;/div&gt;
+    &lt;div class="product-content"&gt;
+        &lt;h3 class="product-title"&gt;Смартфон Premium X&lt;/h3&gt;
+        &lt;p class="product-description"&gt;Мощный смартфон с отличной камерой&lt;/p&gt;
+        &lt;div class="product-price"&gt;24 999 ₽&lt;/div&gt;
+        &lt;button class="product-button"&gt;В корзину&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>CSS стили карточки</span>
+                            </div>
+                            <pre><code>.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    max-width: 320px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.product-badge {
+    background: #ef4444;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.product-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-content {
+    padding: 20px;
+}
+
+.product-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.product-description {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.product-button {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.product-button:hover {
+    background: #1d4ed8;
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <div class="article-conclusion-final">
+                        <h3><i class="fas fa-check-circle"></i> Ключевые выводы:</h3>
+                        
+                        <div class="final-checklist">
+                            <div class="check-item">
+                                <i class="fas fa-check"></i>
+                                <span>CSS отделяет оформление от структуры (HTML)</span>
+                            </div>
+                            <div class="check-item">
+                                <i class="fas fa-check"></i>
+                                <span>Используйте внешние файлы <code>.css</code> для профессиональных проектов</span>
+                            </div>
+                            <div class="check-item">
+                                <i class="fas fa-check"></i>
+                                <span>Box Model: content → padding → border → margin</span>
+                            </div>
+                            <div class="check-item">
+                                <i class="fas fa-check"></i>
+                                <span>Flexbox для одномерных, Grid для двумерных раскладок</span>
+                            </div>
+                            <div class="check-item">
+                                <i class="fas fa-check"></i>
+                                <span>Mobile First: сначала мобильные, потом десктоп</span>
+                            </div>
+                            <div class="check-item">
+                                <i class="fas fa-check"></i>
+                                <span>Практика — лучший учитель. Создайте реальный проект!</span>
+                            </div>
+                        </div>
+
+                        <div class="final-statement">
+                            <p><strong>CSS — это искусство превращения черно-белого каркаса в живой, дышащий дизайн. Он дает вашему сайту характер, эмоции и удобство. Начните с основ, экспериментируйте, и скоро вы сможете создавать интерфейсы, которые будут радовать и вас, и ваших пользователей.</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="article-cta">
+                        <h3>Нужен красивый и современный сайт?</h3>
+                        <p>Digital Greatness создает адаптивные сайты с продуманным дизайном. Мы знаем, как сделать сайт, который будет работать на ваш бизнес и привлекать клиентов.</p>
+                        <a href="/#audit" class="btn btn-primary">
+                            <i class="fas fa-palette"></i> Обсудить дизайн сайта
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="article-navigation">
+                <a href="/blog/javascript-guide/" class="nav-next">
+                    <div>
+                        <span>Следующая статья</span>
+                        <h4>Java Script</h4>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="/blog/" class="nav-prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Все статьи</span>
+                        <h4>Вернуться к полезным материалам</h4>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </article>
+
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">DG</span>
+                        <span class="logo-text">Digital Greatness</span>
+                    </a>
+                    <p>Онлайн-присутствие для малого бизнеса в Солнечногорске. Системный подход к привлечению клиентов.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Проект</h4>
+                    <ul>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#process">Как работаем</a></li>
+                        <li><a href="/blog/">Полезные статьи</a></li>
+                        <li><a href="/works/">Готовые работы</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="https://t.me/digital_greatness" target="_blank" rel="noopener">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </a></li>
+                        <li><a href="https://vk.com/digital_greatness" target="_blank" rel="noopener">
+                                <i class="fab fa-vk"></i> ВКонтакте
+                            </a></li>
+                        <li><a href="mailto:secretplace122.95@gmail.com">
+                                <i class="fas fa-envelope"></i> Почта
+                            </a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-cta">
+                    <h4>Начать работу</h4>
+                    <p>Готовы улучшить свое онлайн-присутствие?</p>
+                    <a href="/#audit" class="btn btn-outline-light">Оставить заявку</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Digital Greatness. Солнечногорск.</p>
+                <p>Digital Greatness - проект, цель которого помочь самозанятым и владельцам малого бизнеса повысить своё присутствие в интернете, тем самым повысить узнаваемость, трафик и продажи.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/views-counter.js"></script>
+    <script src="/js/article.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Статья "CSS руководство" загружена');
+            setTimeout(function () {
+                if (window.viewsCounter) {
+                    window.viewsCounter.updateUI();
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
